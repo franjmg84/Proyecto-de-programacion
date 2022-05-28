@@ -1,8 +1,12 @@
 package clases;
 
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import enumeration.Genero;
 import enumeration.Idioma;
 import enumeration.Pais;
+import utils.ConexionBD;
 
 public class Persona extends CosaConNombre {
 	
@@ -15,11 +19,32 @@ public class Persona extends CosaConNombre {
 	 * @param pais
 	 * @param idioma
 	 */
-	public Persona(String nombre, Genero genero, Pais pais, Idioma idioma) {
+	protected Persona(String nombre, Genero genero, Pais pais, Idioma idioma) {
 		super(nombre);
 		this.genero = genero;
 		this.pais = pais;
 		this.idioma = idioma;
+	}
+	
+	public Persona(String nombre, Genero genero, Pais pais, Idioma idioma) throws SQLException{
+		super(nombre);
+		
+		Statement smt = ConexionBD.conectar();
+		
+		if (
+				smt.executeUpdate("INSERT INTO persona (numeroChip, raza, nombre, humano) "
+						+ "VALUES (" + nombre + ", '" + genero + "', '" + pais + "', '" + idioma + "');")
+				> 0
+		) {
+			this.genero = genero;
+			this.pais = pais;
+			this.idioma = idioma;
+		}else {
+			ConexionBD.desconectar();
+			throw new SQLException("Error al insertar datos.");
+		}
+		
+		
 	}
 	/**
 	 *Metodo get para la variable genero
