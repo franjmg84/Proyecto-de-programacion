@@ -19,13 +19,7 @@ public class Persona extends CosaConNombre {
 	 * @param pais
 	 * @param idioma
 	 */
-	protected Persona(String nombre, Genero genero, Pais pais, Idioma idioma) {
-		super(nombre);
-		this.genero = genero;
-		this.pais = pais;
-		this.idioma = idioma;
-	}
-	
+
 	public Persona(String nombre, Genero genero, Pais pais, Idioma idioma) throws SQLException{
 		super(nombre);
 		
