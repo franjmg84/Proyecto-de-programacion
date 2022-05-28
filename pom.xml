@@ -4,4 +4,15 @@
   <artifactId>proyecto.programacion.final</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>proyecto.programacion.final</name>
+  	
+  	<dependencies>
+  	
+  		<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.28</version>
+	    
+	</dependency>
+  	
+  	</dependencies>
 </project>
