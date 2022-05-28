@@ -32,7 +32,7 @@ public class Persona extends CosaConNombre {
 		Statement smt = ConexionBD.conectar();
 		
 		if (
-				smt.executeUpdate("INSERT INTO persona (numeroChip, raza, nombre, humano) "
+				smt.executeUpdate("INSERT INTO persona (nombre, genero, pais, idioma) "
 						+ "VALUES (" + nombre + ", '" + genero + "', '" + pais + "', '" + idioma + "');")
 				> 0
 		) {
