@@ -1,8 +1,8 @@
 package clases;
 
-import enumProyecto.Genero;
-import enumProyecto.Idioma;
-import enumProyecto.Pais;
+import enumeration.Genero;
+import enumeration.Idioma;
+import enumeration.Pais;
 
 public class Usuario extends Persona{
 	

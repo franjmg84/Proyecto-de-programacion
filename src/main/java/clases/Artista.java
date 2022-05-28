@@ -2,9 +2,9 @@ package clases;
 
 import java.awt.image.BufferedImage;
 
-import enumProyecto.Genero;
-import enumProyecto.Idioma;
-import enumProyecto.Pais;
+import enumeration.Genero;
+import enumeration.Idioma;
+import enumeration.Pais;
 
 public class Artista extends Persona {
 	
