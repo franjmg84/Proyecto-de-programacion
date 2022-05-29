@@ -18,11 +18,13 @@ public class Ventana extends JFrame {
 	public Ventana() {
 		this.setSize(500,300);
 		this.setLocationRelativeTo(null);
+		this.setExtendedState(JFrame.HAND_CURSOR);
 		this.setTitle("Proyecto");
 		//this.setIconImage/new ImageIcon().getImage());
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setContentPane(new PantallaLogin(this));
 		this.setVisible(true);
 	}
 
