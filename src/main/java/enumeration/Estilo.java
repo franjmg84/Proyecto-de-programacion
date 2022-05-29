@@ -3,5 +3,5 @@ package enumeration;
 public enum Estilo {
 	ROCK,
 	POP,
-	SERIES;
+	SERIES_TV;
 }

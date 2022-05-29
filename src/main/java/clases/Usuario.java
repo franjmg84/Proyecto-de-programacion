@@ -20,6 +20,7 @@ public class Usuario extends Persona{
 	 */
 	public Usuario(String nombre, Genero genero, Pais pais, Idioma idioma, String password) throws SQLException {
 		super(nombre, genero, pais, idioma);
+		
 		this.password = password;
 	}
 

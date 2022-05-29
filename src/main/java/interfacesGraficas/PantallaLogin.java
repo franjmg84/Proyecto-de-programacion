@@ -21,19 +21,19 @@ public class PantallaLogin extends JPanel {
 		JButton botonLogin = new JButton("Login");
 		botonLogin.setToolTipText("Pincha aqui para iniciar sesion");
 		botonLogin.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
-		botonLogin.setBounds(108, 573, 263, 53);
+		botonLogin.setBounds(106, 440, 263, 53);
 		this.add(botonLogin);
 		
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setToolTipText("Pincha aqui para registrarte");
 		btnRegistrarse.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
-		btnRegistrarse.setBounds(501, 573, 273, 53);
+		btnRegistrarse.setBounds(513, 440, 273, 53);
 		this.add(btnRegistrarse);
 		
 		JLabel lblNewLabel = new JLabel("Iniciar Sesion");
 		lblNewLabel.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 30));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 10, 880, 43);
+		lblNewLabel.setBounds(10, 52, 880, 43);
 		add(lblNewLabel);
 		
 		textField = new JTextField();
@@ -57,6 +57,11 @@ public class PantallaLogin extends JPanel {
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setBounds(186, 291, 122, 32);
 		add(lblNewLabel_1);
+		
+		JButton botonCerrar = new JButton("Cerrar");
+		botonCerrar.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
+		botonCerrar.setBounds(341, 558, 204, 53);
+		add(botonCerrar);
 		
 		
 	}
