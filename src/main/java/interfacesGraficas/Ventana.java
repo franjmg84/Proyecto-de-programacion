@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 public class Ventana extends JFrame {
 	
 	private HashMap<String,JPanel> pantallas;
+	protected Usuario usuarioLogeado;
 	/**
 	 * Create the panel.
 	 */

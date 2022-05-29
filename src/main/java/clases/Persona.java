@@ -10,9 +10,9 @@ import utils.ConexionBD;
 
 public class Persona extends CosaConNombre {
 	
-	private Genero genero;
-	private Pais pais;
-	private Idioma idioma;
+	protected Genero genero;
+	protected Pais pais;
+	protected Idioma idioma;
 	/**
 	 * @param nombre
 	 * @param genero

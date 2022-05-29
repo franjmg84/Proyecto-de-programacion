@@ -1,49 +1,58 @@
 package clases;
 
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import enumeraciones.Genero;
 import enumeraciones.Idioma;
 import enumeraciones.Pais;
 
+import utils.ConexionBD;
+
 public class Usuario extends Persona{
 	
-	private String password;
+	private String pass;
 
 	/**
 	 * @param nombre
 	 * @param genero
 	 * @param pais
 	 * @param idioma
-	 * @param password
+	 * @param pass
 	 * @throws SQLException
 	 */
-	public Usuario(String nombre, Genero genero, Pais pais, Idioma idioma, String password) throws SQLException {
+	public Usuario(String nombre, Genero genero, Pais pais, Idioma idioma, String pass) throws SQLException {
 		super(nombre, genero, pais, idioma);
 		
-		this.password = password;
+		
+		
+			
+		
+		this.pass = pass;
 	}
 
 	/**
-	 *Metodo get para la variable password
-	 * @return devuelve el valor de password
+	 *Metodo get para la variable pass
+	 * @return devuelve el valor de pass
 	 */
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
 
 	/**
-	 *Metodo set pata la variable password
-	 * @param password el nuevo valor de  password
+	 *Metodo set pata la variable pass
+	 * @param pass el nuevo valor de  pass
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	@Override
 	public String toString() {
-		return "Usuario [password=" + password + "]";
+		return "Usuario [pass=" + pass + "]";
 	}
+	
+	
 
 	
 	

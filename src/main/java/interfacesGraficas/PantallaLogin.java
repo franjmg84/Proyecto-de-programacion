@@ -1,5 +1,4 @@
 package interfacesGraficas;
-
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -7,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
+import clases.Usuario;
 import componentesvisuales.BotonAzul;
 
 import javax.swing.JLabel;
@@ -20,19 +20,20 @@ import java.awt.event.MouseEvent;
 public class PantallaLogin extends JPanel {
 	
 	private Ventana ventana;
-	private JTextField campoUsuario;
-	private JPasswordField passwordField;
+	private JTextField campoEmail;
+	private JPasswordField campoContraseña;
 	
 	public PantallaLogin(Ventana v) {
 		this.ventana=v;
-		
 		setLayout(null);
 		
 		JButton botonLogin = new BotonAzul("Login");
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.irAPantalla("login");
+				String nombre=campoEmail.getText();
+				String contraseña=new String(campoContraseña.getPassword());
+				//ventana.usuarioLogeado=new Usuario(nombre,contraseña);
 			}
 		});
 		botonLogin.addActionListener(new ActionListener() {
@@ -52,6 +53,7 @@ public class PantallaLogin extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ventana.irAPantalla("registro");
+				
 			}
 		});
 		botonRegistro.setBackground(new Color(0, 204, 255));
@@ -65,10 +67,10 @@ public class PantallaLogin extends JPanel {
 		lblNewLabel.setBounds(10, 52, 880, 43);
 		add(lblNewLabel);
 		
-		campoUsuario = new JTextField();
-		campoUsuario.setBounds(222, 206, 477, 27);
-		add(campoUsuario);
-		campoUsuario.setColumns(10);
+		campoEmail = new JTextField();
+		campoEmail.setBounds(222, 206, 477, 27);
+		add(campoEmail);
+		campoEmail.setColumns(10);
 		
 		JLabel email = new JLabel("Email");
 		email.setFont(new Font("Dubai Medium", Font.PLAIN, 18));
@@ -83,19 +85,24 @@ public class PantallaLogin extends JPanel {
 		this.add(lblNewLabel_1);
 		
 		JButton botonCerrar = new BotonAzul("Cerrar");
+		botonCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonCerrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.irAPantalla("login");
+				System.exit(0);
 			}
 		});
 		botonCerrar.setToolTipText("Pincha aqui para cerrar");
 		botonCerrar.setBounds(341, 558, 204, 53);
 		this.add(botonCerrar);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(222, 291, 477, 27);
-		add(passwordField);
+		campoContraseña = new JPasswordField();
+		campoContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		campoContraseña.setBounds(222, 291, 477, 27);
+		add(campoContraseña);
 		
 		
 	}

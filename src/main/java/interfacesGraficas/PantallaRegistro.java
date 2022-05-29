@@ -13,6 +13,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
@@ -21,7 +23,7 @@ public class PantallaRegistro extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PantallaRegistro(Ventana ventana) {
+	public PantallaRegistro(final Ventana ventana) {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 32, 298, 0, 0, 0, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -35,7 +37,7 @@ public class PantallaRegistro extends JPanel {
 		GridBagConstraints gbc_tituloRegistro = new GridBagConstraints();
 		gbc_tituloRegistro.anchor = GridBagConstraints.WEST;
 		gbc_tituloRegistro.insets = new Insets(0, 0, 5, 5);
-		gbc_tituloRegistro.gridx = 3;
+		gbc_tituloRegistro.gridx = 2;
 		gbc_tituloRegistro.gridy = 1;
 		add(tituloRegistro, gbc_tituloRegistro);
 		
@@ -60,6 +62,12 @@ public class PantallaRegistro extends JPanel {
 		campoUsuario.setColumns(10);
 		
 		JButton botonAtras = new JButton("Atras");
+		botonAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irAPantalla("login");
+			}
+		});
 		botonAtras.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -87,6 +95,14 @@ public class PantallaRegistro extends JPanel {
 		campoContraseña.setColumns(10);
 		
 		JButton botonRegistrarse = new JButton("Registrarse");
+		botonRegistrarse.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String nombreUsuario=campoUsuario.getText();
+				//String contraseña=new String(campoContraseña.getp
+				//String email=campoEmail.
+			}
+		});
 		botonRegistrarse.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
