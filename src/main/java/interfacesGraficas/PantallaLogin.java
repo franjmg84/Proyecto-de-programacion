@@ -43,12 +43,18 @@ public class PantallaLogin extends JPanel {
 		botonLogin.setBounds(106, 440, 263, 53);
 		this.add(botonLogin);
 		
-		JButton btnRegistrarse = new BotonAzul("Registrarse");
-		btnRegistrarse.setBackground(new Color(0, 204, 255));
-		btnRegistrarse.setToolTipText("Pincha aqui para registrarte");
-		btnRegistrarse.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
-		btnRegistrarse.setBounds(513, 440, 273, 53);
-		this.add(btnRegistrarse);
+		JButton botonRegistro = new BotonAzul("Registrarse");
+		botonRegistro.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irAPantalla("registro");
+			}
+		});
+		botonRegistro.setBackground(new Color(0, 204, 255));
+		botonRegistro.setToolTipText("Pincha aqui para registrarte");
+		botonRegistro.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
+		botonRegistro.setBounds(513, 440, 273, 53);
+		this.add(botonRegistro);
 		
 		JLabel lblNewLabel = new JLabel("Iniciar Sesion");
 		lblNewLabel.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 40));
@@ -74,6 +80,12 @@ public class PantallaLogin extends JPanel {
 		this.add(lblNewLabel_1);
 		
 		JButton botonCerrar = new BotonAzul("Cerrar");
+		botonCerrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irAPantalla("login");
+			}
+		});
 		botonCerrar.setToolTipText("Pincha aqui para cerrar");
 		botonCerrar.setForeground(new Color(0, 0, 0));
 		botonCerrar.setBackground(new Color(0, 204, 255));

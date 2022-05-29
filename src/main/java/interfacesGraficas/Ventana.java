@@ -37,8 +37,9 @@ public class Ventana extends JFrame {
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		this.setContentPane(new PantallaLogin(this));
 		this.setVisible(true);
+		this.setContentPane(new PantallaLogin(this));
+		
 	}
 	public void irAPantalla(String nombrePantalla) {
 		Iterator it=this.pantallas.values().iterator();
