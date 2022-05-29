@@ -47,5 +47,6 @@ public class Ventana extends JFrame {
 			actual.setVisible(false);
 		}
 		this.pantallas.get(nombrePantalla).setVisible(true);
+		this.setContentPane(this.pantallas.get(nombrePantalla));
 	}
 }
