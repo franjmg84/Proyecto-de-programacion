@@ -1,4 +1,4 @@
-package enumeration;
+package enumeraciones;
 
 public enum Estilo {
 	ROCK,

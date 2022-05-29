@@ -3,9 +3,9 @@ package clases;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import enumeration.Genero;
-import enumeration.Idioma;
-import enumeration.Pais;
+import enumeraciones.Genero;
+import enumeraciones.Idioma;
+import enumeraciones.Pais;
 import utils.ConexionBD;
 
 public class Persona extends CosaConNombre {

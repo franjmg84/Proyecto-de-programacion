@@ -3,9 +3,9 @@ package clases;
 import java.awt.image.BufferedImage;
 import java.sql.SQLException;
 
-import enumeration.Genero;
-import enumeration.Idioma;
-import enumeration.Pais;
+import enumeraciones.Genero;
+import enumeraciones.Idioma;
+import enumeraciones.Pais;
 
 public class Artista extends Persona {
 	

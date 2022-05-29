@@ -32,7 +32,7 @@ public class PantallaLogin extends JPanel {
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				ventana.irAPantalla("login");
 			}
 		});
 		botonLogin.addActionListener(new ActionListener() {
@@ -44,6 +44,10 @@ public class PantallaLogin extends JPanel {
 		this.add(botonLogin);
 		
 		JButton botonRegistro = new BotonAzul("Registrarse");
+		botonRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -52,7 +56,6 @@ public class PantallaLogin extends JPanel {
 		});
 		botonRegistro.setBackground(new Color(0, 204, 255));
 		botonRegistro.setToolTipText("Pincha aqui para registrarte");
-		botonRegistro.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
 		botonRegistro.setBounds(513, 440, 273, 53);
 		this.add(botonRegistro);
 		
@@ -87,9 +90,6 @@ public class PantallaLogin extends JPanel {
 			}
 		});
 		botonCerrar.setToolTipText("Pincha aqui para cerrar");
-		botonCerrar.setForeground(new Color(0, 0, 0));
-		botonCerrar.setBackground(new Color(0, 204, 255));
-		botonCerrar.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
 		botonCerrar.setBounds(341, 558, 204, 53);
 		this.add(botonCerrar);
 		
