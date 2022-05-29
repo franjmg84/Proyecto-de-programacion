@@ -7,8 +7,8 @@ public class PantallaRegistro extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PantallaRegistro() {
-
+	public PantallaRegistro(Ventana ventana) {
+		// TODO Auto-generated constructor stub
 	}
 
 }

@@ -5,63 +5,85 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.MatteBorder;
+
+import componentesvisuales.BotonAzul;
+
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JPasswordField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaLogin extends JPanel {
 	
 	private Ventana ventana;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField campoUsuario;
+	private JPasswordField passwordField;
 	
 	public PantallaLogin(Ventana v) {
 		this.ventana=v;
 		
 		setLayout(null);
 		
-		JButton botonLogin = new JButton("Login");
+		JButton botonLogin = new BotonAzul("Login");
+		botonLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		botonLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonLogin.setToolTipText("Pincha aqui para iniciar sesion");
-		botonLogin.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
 		botonLogin.setBounds(106, 440, 263, 53);
 		this.add(botonLogin);
 		
-		JButton btnRegistrarse = new JButton("Registrarse");
+		JButton btnRegistrarse = new BotonAzul("Registrarse");
+		btnRegistrarse.setBackground(new Color(0, 204, 255));
 		btnRegistrarse.setToolTipText("Pincha aqui para registrarte");
 		btnRegistrarse.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
 		btnRegistrarse.setBounds(513, 440, 273, 53);
 		this.add(btnRegistrarse);
 		
 		JLabel lblNewLabel = new JLabel("Iniciar Sesion");
-		lblNewLabel.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 30));
+		lblNewLabel.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 40));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 52, 880, 43);
 		add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(309, 195, 344, 43);
-		add(textField);
-		textField.setColumns(10);
+		campoUsuario = new JTextField();
+		campoUsuario.setBounds(222, 206, 477, 27);
+		add(campoUsuario);
+		campoUsuario.setColumns(10);
 		
 		JLabel email = new JLabel("Email");
 		email.setFont(new Font("Dubai Medium", Font.PLAIN, 18));
 		email.setHorizontalAlignment(SwingConstants.CENTER);
-		email.setBounds(213, 194, 86, 43);
+		email.setBounds(106, 205, 86, 43);
 		add(email);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(309, 287, 344, 43);
-		add(textField_1);
-		textField_1.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Password");
 		lblNewLabel_1.setFont(new Font("Dubai Medium", Font.PLAIN, 18));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(186, 291, 122, 32);
-		add(lblNewLabel_1);
+		lblNewLabel_1.setBounds(105, 291, 122, 32);
+		this.add(lblNewLabel_1);
 		
-		JButton botonCerrar = new JButton("Cerrar");
+		JButton botonCerrar = new BotonAzul("Cerrar");
+		botonCerrar.setToolTipText("Pincha aqui para cerrar");
+		botonCerrar.setForeground(new Color(0, 0, 0));
+		botonCerrar.setBackground(new Color(0, 204, 255));
 		botonCerrar.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
 		botonCerrar.setBounds(341, 558, 204, 53);
-		add(botonCerrar);
+		this.add(botonCerrar);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(222, 291, 477, 27);
+		add(passwordField);
 		
 		
 	}
