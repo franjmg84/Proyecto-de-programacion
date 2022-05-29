@@ -16,7 +16,7 @@ public class Ventana extends JFrame {
 	 * Create the panel.
 	 */
 	public Ventana() {
-		this.setSize(500,300);
+		this.setSize(900,700);
 		this.setLocationRelativeTo(null);
 		this.setExtendedState(JFrame.HAND_CURSOR);
 		this.setTitle("Proyecto");
