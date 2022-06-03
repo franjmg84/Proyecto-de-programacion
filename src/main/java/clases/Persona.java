@@ -6,6 +6,8 @@ import java.sql.Statement;
 import enumeraciones.Genero;
 import enumeraciones.Idioma;
 import enumeraciones.Pais;
+import excepciones.NombreInvalidoException;
+import excepciones.PassInvalidException;
 import utils.ConexionBD;
 
 public class Persona extends CosaConNombre {
@@ -23,23 +25,28 @@ public class Persona extends CosaConNombre {
 	public Persona(String nombre, Genero genero, Pais pais, Idioma idioma) throws SQLException{
 		super(nombre);
 		
-		Statement smt = ConexionBD.conectar();
+		if (!isnombreValid(nombre)) {
+			throw new NombreInvalidoException("debe escribir un nombre");
+		}
 		
-		if (
-				smt.executeUpdate("INSERT INTO persona (nombre, genero, pais, idioma) "
-						+ "VALUES (" + nombre + ", '" + genero + "', '" + pais + "', '" + idioma + "');")
-				> 0
-		) {
+		Statement smt=ConexionBD.conectar();
+		
+		if(smt.executeUpdate("insert into usuario values('"+nombre+"',	"
+				+ "'"+nombre+"','"+genero+"',"+pais+",'"+idioma+"')")>0) {
+			// Solo si todo ha ido bien insertando, se modifican las variables internas
 			this.genero = genero;
-			this.pais = pais;
-			this.idioma = idioma;
+			
 		}else {
-			ConexionBD.desconectar();
-			throw new SQLException("Error al insertar datos.");
+			//Si no se ha podido insertar, lanzo un error: Algo ha ido mal.
+			throw new SQLException("No se ha podido insertar");
 		}
 		
 		
+		ConexionBD.desconectar();
 	}
+	
+		
+	//}
 	/**
 	 *Metodo get para la variable genero
 	 * @return devuelve el valor de genero

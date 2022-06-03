@@ -6,6 +6,9 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.SwingConstants;
+
+import componentesvisuales.BotonAzul;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JRadioButton;
@@ -15,53 +18,57 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import javax.swing.DefaultComboBoxModel;
+import enumeraciones.Pais;
 
 public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
 	private JTextField campoContraseña;
-
+	private Ventana ventana;
 	/**
 	 * Create the panel.
 	 */
-	public PantallaRegistro(final Ventana ventana) {
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{0, 32, 298, 0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		setLayout(gridBagLayout);
+	public PantallaRegistro( Ventana v) {
+		this.ventana = v;
+		setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("Pais");
+		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		lblNewLabel_2.setBounds(387, 406, 119, 28);
+		add(lblNewLabel_2);
 		
 		JLabel tituloRegistro = new JLabel("Registro");
-		tituloRegistro.setFont(new Font("Dubai Medium", Font.ITALIC, 60));
+		tituloRegistro.setForeground(Color.LIGHT_GRAY);
+		tituloRegistro.setBounds(310, 100, 268, 102);
+		tituloRegistro.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
 		tituloRegistro.setHorizontalAlignment(SwingConstants.CENTER);
-		GridBagConstraints gbc_tituloRegistro = new GridBagConstraints();
-		gbc_tituloRegistro.anchor = GridBagConstraints.WEST;
-		gbc_tituloRegistro.insets = new Insets(0, 0, 5, 5);
-		gbc_tituloRegistro.gridx = 2;
-		gbc_tituloRegistro.gridy = 1;
-		add(tituloRegistro, gbc_tituloRegistro);
+		add(tituloRegistro);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(444, 153, 45, 13);
+		add(lblNewLabel);
 		
 		JLabel labelUsuario = new JLabel("Usuario");
+		labelUsuario.setForeground(Color.LIGHT_GRAY);
+		labelUsuario.setBounds(399, 221, 90, 35);
 		labelUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		labelUsuario.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		GridBagConstraints gbc_labelUsuario = new GridBagConstraints();
-		gbc_labelUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_labelUsuario.anchor = GridBagConstraints.EAST;
-		gbc_labelUsuario.gridx = 1;
-		gbc_labelUsuario.gridy = 4;
-		add(labelUsuario, gbc_labelUsuario);
+		add(labelUsuario);
 		
 		campoUsuario = new JTextField();
+		campoUsuario.setBounds(254, 266, 382, 27);
 		campoUsuario.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		GridBagConstraints gbc_campoUsuario = new GridBagConstraints();
-		gbc_campoUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_campoUsuario.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoUsuario.gridx = 2;
-		gbc_campoUsuario.gridy = 4;
-		add(campoUsuario, gbc_campoUsuario);
+		add(campoUsuario);
 		campoUsuario.setColumns(10);
 		
-		JButton botonAtras = new JButton("Atras");
+		JButton botonAtras = new BotonAzul("Atras");
+		botonAtras.setBounds(681, 590, 169, 48);
 		botonAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -75,31 +82,25 @@ public class PantallaRegistro extends JPanel {
 		});
 		
 		JLabel labelContraseña = new JLabel("Contrase\u00F1a");
+		labelContraseña.setForeground(Color.LIGHT_GRAY);
+		labelContraseña.setBounds(387, 303, 119, 35);
 		labelContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		labelContraseña.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		GridBagConstraints gbc_labelContraseña = new GridBagConstraints();
-		gbc_labelContraseña.anchor = GridBagConstraints.EAST;
-		gbc_labelContraseña.insets = new Insets(0, 0, 5, 5);
-		gbc_labelContraseña.gridx = 1;
-		gbc_labelContraseña.gridy = 7;
-		add(labelContraseña, gbc_labelContraseña);
+		add(labelContraseña);
 		
 		campoContraseña = new JTextField();
+		campoContraseña.setBounds(254, 348, 382, 27);
 		campoContraseña.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		GridBagConstraints gbc_campoContraseña = new GridBagConstraints();
-		gbc_campoContraseña.insets = new Insets(0, 0, 5, 5);
-		gbc_campoContraseña.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoContraseña.gridx = 2;
-		gbc_campoContraseña.gridy = 7;
-		add(campoContraseña, gbc_campoContraseña);
+		add(campoContraseña);
 		campoContraseña.setColumns(10);
 		
-		JButton botonRegistrarse = new JButton("Registrarse");
+		JButton botonRegistrarse = new BotonAzul("Registrarse");
+		botonRegistrarse.setBounds(362, 518, 169, 48);
 		botonRegistrarse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String nombreUsuario=campoUsuario.getText();
-				//String contraseña=new String(campoContraseña.getp
+				//String contraseña=new String()
 				//String email=campoEmail.
 			}
 		});
@@ -110,23 +111,16 @@ public class PantallaRegistro extends JPanel {
 		});
 		
 		JComboBox comboBox = new JComboBox();
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 2;
-		gbc_comboBox.gridy = 10;
-		add(comboBox, gbc_comboBox);
-		GridBagConstraints gbc_botonRegistrarse = new GridBagConstraints();
-		gbc_botonRegistrarse.insets = new Insets(0, 0, 5, 5);
-		gbc_botonRegistrarse.gridx = 2;
-		gbc_botonRegistrarse.gridy = 14;
-		add(botonRegistrarse, gbc_botonRegistrarse);
-		GridBagConstraints gbc_botonAtras = new GridBagConstraints();
-		gbc_botonAtras.insets = new Insets(0, 0, 5, 5);
-		gbc_botonAtras.gridx = 2;
-		gbc_botonAtras.gridy = 17;
-		add(botonAtras, gbc_botonAtras);
+		comboBox.setModel(new DefaultComboBoxModel(Pais.values()));
+		comboBox.setBounds(310, 444, 283, 27);
+		add(comboBox);
+		add(botonRegistrarse);
+		add(botonAtras);
+		
+		JLabel fondoLogo = new JLabel("");
+		fondoLogo.setIcon(new ImageIcon(PantallaRegistro.class.getResource("/imagenes/fondo con logo.png")));
+		fondoLogo.setBounds(0, 0, 900, 701);
+		add(fondoLogo);
 		
 	}
-
 }

@@ -16,8 +16,8 @@ public class BotonAzul extends JButton {
 		this.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				setForeground(new Color(200, 150, 150));
-				setBackground(new Color(50, 0, 0));
+				setForeground(new Color(255, 255, 255));
+				setBackground(new Color(255, 128, 0));
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			@Override
@@ -27,7 +27,7 @@ public class BotonAzul extends JButton {
 		});
 	}
 	private void estilosPorDefecto() {
-		this.setBackground(new Color(0, 204, 255));
+		this.setBackground(new Color(211, 211, 211));
 		this.setForeground(new Color(0, 0, 0));
 		this.setBorder(
 				new MatteBorder(3,3,3,3,new Color(200,0,0)));

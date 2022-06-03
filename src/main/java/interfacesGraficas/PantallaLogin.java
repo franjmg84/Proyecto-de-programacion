@@ -16,6 +16,7 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
 
 public class PantallaLogin extends JPanel {
 	
@@ -28,6 +29,8 @@ public class PantallaLogin extends JPanel {
 		setLayout(null);
 		
 		JButton botonLogin = new BotonAzul("Login");
+		botonLogin.setBackground(Color.LIGHT_GRAY);
+		botonLogin.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 20));
 		botonLogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -41,7 +44,7 @@ public class PantallaLogin extends JPanel {
 			}
 		});
 		botonLogin.setToolTipText("Pincha aqui para iniciar sesion");
-		botonLogin.setBounds(106, 440, 263, 53);
+		botonLogin.setBounds(369, 455, 169, 53);
 		this.add(botonLogin);
 		
 		JButton botonRegistro = new BotonAzul("Registrarse");
@@ -49,6 +52,9 @@ public class PantallaLogin extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		botonRegistro.setBackground(Color.LIGHT_GRAY);
+		botonRegistro.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 20));
+		
 		botonRegistro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -56,35 +62,40 @@ public class PantallaLogin extends JPanel {
 				
 			}
 		});
-		botonRegistro.setBackground(new Color(0, 204, 255));
 		botonRegistro.setToolTipText("Pincha aqui para registrarte");
-		botonRegistro.setBounds(513, 440, 273, 53);
+		botonRegistro.setBounds(40, 590, 169, 53);
 		this.add(botonRegistro);
 		
 		JLabel lblNewLabel = new JLabel("Iniciar Sesion");
+		lblNewLabel.setForeground(Color.LIGHT_GRAY);
 		lblNewLabel.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 40));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 52, 880, 43);
+		lblNewLabel.setBounds(0, 129, 900, 53);
 		add(lblNewLabel);
 		
 		campoEmail = new JTextField();
-		campoEmail.setBounds(222, 206, 477, 27);
+		campoEmail.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		campoEmail.setBounds(257, 253, 383, 27);
 		add(campoEmail);
 		campoEmail.setColumns(10);
 		
-		JLabel email = new JLabel("Email");
-		email.setFont(new Font("Dubai Medium", Font.PLAIN, 18));
+		JLabel email = new JLabel("Nombre");
+		email.setForeground(Color.LIGHT_GRAY);
+		email.setFont(new Font("Dubai Medium", Font.PLAIN, 20));
 		email.setHorizontalAlignment(SwingConstants.CENTER);
-		email.setBounds(106, 205, 86, 43);
+		email.setBounds(0, 206, 900, 43);
 		add(email);
 		
 		JLabel lblNewLabel_1 = new JLabel("Password");
-		lblNewLabel_1.setFont(new Font("Dubai Medium", Font.PLAIN, 18));
+		lblNewLabel_1.setForeground(Color.LIGHT_GRAY);
+		lblNewLabel_1.setFont(new Font("Dubai Medium", Font.PLAIN, 20));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(105, 291, 122, 32);
+		lblNewLabel_1.setBounds(0, 305, 900, 32);
 		this.add(lblNewLabel_1);
 		
 		JButton botonCerrar = new BotonAzul("Cerrar");
+		botonCerrar.setBackground(Color.LIGHT_GRAY);
+		botonCerrar.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 20));
 		botonCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -96,13 +107,23 @@ public class PantallaLogin extends JPanel {
 			}
 		});
 		botonCerrar.setToolTipText("Pincha aqui para cerrar");
-		botonCerrar.setBounds(341, 558, 204, 53);
+		botonCerrar.setBounds(689, 590, 169, 53);
 		this.add(botonCerrar);
 		
 		campoContraseña = new JPasswordField();
 		campoContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		campoContraseña.setBounds(222, 291, 477, 27);
+		campoContraseña.setBounds(257, 347, 383, 27);
 		add(campoContraseña);
+		
+		JLabel fondoLogin = new JLabel("");
+		fondoLogin.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/fondo con logo.png")));
+		fondoLogin.setBounds(0, 0, 900, 701);
+		add(fondoLogin);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/fondo login.png")));
+		lblNewLabel_2.setBounds(0, 0, 900, 701);
+		add(lblNewLabel_2);
 		
 		
 	}

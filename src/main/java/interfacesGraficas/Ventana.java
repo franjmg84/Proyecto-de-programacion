@@ -17,6 +17,7 @@ public class Ventana extends JFrame {
 	
 	private HashMap<String,JPanel> pantallas;
 	protected Usuario usuarioLogeado;
+	private JPanel pantallaActual;
 	/**
 	 * Create the panel.
 	 */
@@ -24,31 +25,45 @@ public class Ventana extends JFrame {
 		/**
 		 * 
 		 */
-		this.pantallas=new HashMap<String,JPanel>();
-		
-		this.pantallas.put("login",new PantallaLogin(this));
-		this.pantallas.put("registro",new PantallaRegistro(this));
-		
 		
 		this.setSize(900,700);
 		this.setLocationRelativeTo(null);
 		this.setExtendedState(JFrame.HAND_CURSOR);
-		this.setTitle("Proyecto");
+		this.setTitle("Rockola");
 		//this.setIconImage/new ImageIcon().getImage());
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		this.setResizable(false);
+		this.pantallaActual=new PantallaLogin(this);
+		this.setContentPane(this.pantallaActual);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		this.setContentPane(new PantallaLogin(this));
+		//this.setContentPane(new PantallaLogin(this));
 		
 	}
 	public void irAPantalla(String nombrePantalla) {
-		Iterator it=this.pantallas.values().iterator();
+		/*Iterator it=this.pantallas.values().iterator();
 		while(it.hasNext()) {
 			JPanel actual=(JPanel)it.next();
-			actual.setVisible(false);
-		}
-		this.pantallas.get(nombrePantalla).setVisible(true);
-		this.setContentPane(this.pantallas.get(nombrePantalla));
+			actual.setVisible(false);*/
+		//}
+		this.pantallaActual.setVisible(false);
+		this.pantallaActual=null;
+		switch (nombrePantalla) {
+		case "login":
+			this.pantallaActual=new PantallaLogin(this);
+			break;
+		case "registro":
+			this.pantallaActual=new PantallaRegistro(this);
+			break;
+		case "listarUsuarios":
+			//this.pantallaActual=new PantallaListarUsuarios(this);
+			//break;
+		default:
+			break;
+	}
+	this.pantallaActual.setVisible(true);
+	this.setContentPane(pantallaActual);
+		//this.pantallas.get(nombrePantalla).setVisible(true);
+		//this.setContentPane(this.pantallas.get(nombrePantalla));
 	}
 }
