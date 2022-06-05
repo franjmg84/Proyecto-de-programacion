@@ -10,6 +10,7 @@ import javax.swing.border.MatteBorder;
 import clases.Sonido;
 import clases.Usuario;
 import componentesvisuales.BotonAzul;
+import hilos.MusicaFondo;
 
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
@@ -119,7 +120,11 @@ public class PantallaLogin extends JPanel {
 		botonCerrar.setToolTipText("Pincha aqui para cerrar");
 		botonCerrar.setBounds(689, 590, 169, 53);
 		this.add(botonCerrar);
-
+		
+		
+		MusicaFondo musica= new MusicaFondo(new File("./Bon Jovi.wav"));
+		musica.start();
+		
 		campoContraseña = new JPasswordField();
 		campoContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		campoContraseña.setBounds(257, 347, 383, 27);

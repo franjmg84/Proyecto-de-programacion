@@ -19,7 +19,7 @@ public class Principal {
 		//ArrayList<Usuario> usuarios=new ArrayList<Usuario>();
 		//HashMap<String,Usuario> mapa;
 		
-		
+		  
 	
 	}
 

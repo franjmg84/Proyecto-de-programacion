@@ -42,9 +42,14 @@ public class PantallaEleccionEstilo extends JPanel {
 		add(botonAtras);
 		
 		JButton botonEntrar = new BotonAzul("Entrar");
+		botonEntrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonEntrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				ventana.irAPantalla("juego");
 			}
 		});
@@ -67,6 +72,12 @@ public class PantallaEleccionEstilo extends JPanel {
 		add(BotonRockPop);
 		
 		JRadioButton botonTv = new JRadioButton("Series de TV");
+		botonTv.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
 		botonTv.setBackground(new Color(255, 20, 147));
 		botonTv.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonTv.setHorizontalAlignment(SwingConstants.LEFT);

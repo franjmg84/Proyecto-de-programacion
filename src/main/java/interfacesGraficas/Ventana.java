@@ -6,6 +6,8 @@ import clases.Usuario;
 
 import java.awt.Cursor;
 import java.awt.FlowLayout;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -18,15 +20,16 @@ public class Ventana extends JFrame {
 	private HashMap<String,JPanel> pantallas;
 	protected Usuario usuarioLogeado;
 	private JPanel pantallaActual;
-	
+	protected ArrayList<File> cancionesPorJugar;
+	protected ArrayList<File> cancionesJugadas;
 	/**
 	 * Create the panel.
 	 */
 	public Ventana() {
-		/**
-		 * 
-		 */
+		this.cancionesPorJugar= new ArrayList<File>();
+		this.cancionesJugadas=new ArrayList<File>();
 		
+
 		this.setSize(900,700);
 		this.setLocationRelativeTo(null);
 		this.setExtendedState(JFrame.HAND_CURSOR);

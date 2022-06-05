@@ -25,6 +25,9 @@ public class Persona extends CosaConNombre {
 		this.pais = pais;
 		this.idioma = idioma;
 	}
+	public Persona() {
+		super("");
+	}
 	/**
 	 *Metodo get para la variable pais
 	 * @return devuelve el valor de pais
