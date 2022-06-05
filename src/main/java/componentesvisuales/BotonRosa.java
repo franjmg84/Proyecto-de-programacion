@@ -34,7 +34,6 @@ public class BotonRosa extends BotonAzul{
 	
 	
 	private void estilosPorDefecto() {
-		this.setForeground(Color.CYAN);
-		this.setBackground(Color.BLUE);
+		;
 	}
 }

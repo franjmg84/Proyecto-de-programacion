@@ -23,10 +23,17 @@ public class PantallaJuego extends JPanel {
 	public PantallaJuego(Ventana v) {
 		setLayout(null);
 		
-		BotonAzul botonPlay = new BotonAzul("Atras");
-		botonPlay.setText("Play");
-		botonPlay.addActionListener(new ActionListener() {
+		BotonAzul BotonConSonido = new BotonAzul("Atras");
+		BotonConSonido.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		BotonConSonido.setText("Play");
+		BotonConSonido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		
@@ -35,9 +42,9 @@ public class PantallaJuego extends JPanel {
 		botonStop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonStop.setBounds(565, 223, 169, 48);
 		add(botonStop);
-		botonPlay.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		botonPlay.setBounds(176, 223, 169, 48);
-		add(botonPlay);
+		BotonConSonido.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		BotonConSonido.setBounds(176, 223, 169, 48);
+		add(BotonConSonido);
 		
 		JLabel fondoJuego = new JLabel("");
 		fondoJuego.setIcon(new ImageIcon(PantallaJuego.class.getResource("/imagenes/fondo juego rockola.png")));

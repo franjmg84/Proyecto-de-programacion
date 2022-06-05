@@ -8,6 +8,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import componentesvisuales.BotonAzul;
+import componentesvisuales.BotonRosa;
 
 import java.awt.Font;
 import javax.swing.JRadioButton;
@@ -25,7 +26,7 @@ public class PantallaEleccionEstilo extends JPanel {
 			this.ventana = v;
 		setLayout(null);
 		
-		JButton botonAtras = new JButton("Atras");
+		JButton botonAtras = new BotonRosa("Atras");
 		botonAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
