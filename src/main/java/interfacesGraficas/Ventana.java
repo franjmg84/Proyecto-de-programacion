@@ -18,6 +18,7 @@ public class Ventana extends JFrame {
 	private HashMap<String,JPanel> pantallas;
 	protected Usuario usuarioLogeado;
 	private JPanel pantallaActual;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -30,7 +31,7 @@ public class Ventana extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setExtendedState(JFrame.HAND_CURSOR);
 		this.setTitle("Rockola");
-		//this.setIconImage/new ImageIcon().getImage());
+		this.setIconImage(new ImageIcon("./logoo.png").getImage());
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		this.setResizable(false);
 		this.pantallaActual=new PantallaLogin(this);
@@ -55,9 +56,12 @@ public class Ventana extends JFrame {
 		case "registro":
 			this.pantallaActual=new PantallaRegistro(this);
 			break;
-		case "listarUsuarios":
-			//this.pantallaActual=new PantallaListarUsuarios(this);
-			//break;
+		case "estilo":
+			this.pantallaActual=new PantallaEleccionEstilo(this);
+			break;
+		case "juego":
+			this.pantallaActual=new PantallaJuego(this);
+			break;
 		default:
 			break;
 	}
@@ -65,5 +69,6 @@ public class Ventana extends JFrame {
 	this.setContentPane(pantallaActual);
 		//this.pantallas.get(nombrePantalla).setVisible(true);
 		//this.setContentPane(this.pantallas.get(nombrePantalla));
+	
 	}
 }

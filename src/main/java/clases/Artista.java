@@ -1,9 +1,9 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+
 import java.sql.SQLException;
 
-import enumeraciones.Genero;
 import enumeraciones.Idioma;
 import enumeraciones.Pais;
 
@@ -19,8 +19,8 @@ public class Artista extends Persona {
 	 * @param foto
 	 * @throws SQLException 
 	 */
-	public Artista(String nombre, Genero genero, Pais pais, Idioma idioma, BufferedImage foto) throws SQLException {
-		super(nombre, genero, pais, idioma);
+	public Artista(String nombre, Pais pais, Idioma idioma, BufferedImage foto) throws SQLException {
+		super(nombre, pais, idioma);
 		this.foto = foto;
 	}
 

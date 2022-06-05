@@ -1,34 +1,33 @@
 package interfacesGraficas;
 
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.SwingConstants;
-
-import componentesvisuales.BotonAzul;
-
+import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
-import java.awt.Color;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+import clases.Usuario;
+import componentesvisuales.BotonAzul;
 import enumeraciones.Pais;
+import enumeraciones.Idioma;
 
 public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
-	private JTextField campoContraseña;
 	private Ventana ventana;
+	private JPasswordField passwordField;
+	private JTextField textField;
 	/**
 	 * Create the panel.
 	 */
@@ -36,16 +35,51 @@ public class PantallaRegistro extends JPanel {
 		this.ventana = v;
 		setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("Pais");
-		lblNewLabel_2.setForeground(Color.LIGHT_GRAY);
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		lblNewLabel_2.setBounds(387, 406, 119, 28);
-		add(lblNewLabel_2);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(Idioma.values()));
+		comboBox.setBounds(499, 461, 119, 27);
+		add(comboBox);
+		
+		
+		
+		JLabel labelIdioma = new JLabel("Idioma");
+		labelIdioma.setHorizontalAlignment(SwingConstants.CENTER);
+		labelIdioma.setForeground(Color.LIGHT_GRAY);
+		labelIdioma.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		labelIdioma.setBounds(489, 423, 119, 28);
+		add(labelIdioma);
+		
+		textField = new JTextField();
+		textField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		textField.setBounds(254, 284, 382, 28);
+		add(textField);
+		textField.setColumns(10);
+		
+		final JLabel campoEmail = new JLabel("Email");
+		campoEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		campoEmail.setFont(new Font("Dubai Medium", Font.PLAIN, 20));
+		campoEmail.setForeground(Color.LIGHT_GRAY);
+		campoEmail.setBounds(399, 239, 88, 48);
+		add(campoEmail);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(254, 368, 382, 28);
+		add(passwordField);
+		
+		JLabel labelPais = new JLabel("Pais");
+		labelPais.setForeground(Color.LIGHT_GRAY);
+		labelPais.setHorizontalAlignment(SwingConstants.CENTER);
+		labelPais.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		labelPais.setBounds(277, 423, 119, 28);
+		add(labelPais);
 		
 		JLabel tituloRegistro = new JLabel("Registro");
 		tituloRegistro.setForeground(Color.LIGHT_GRAY);
-		tituloRegistro.setBounds(310, 100, 268, 102);
+		tituloRegistro.setBounds(310, 75, 268, 102);
 		tituloRegistro.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
 		tituloRegistro.setHorizontalAlignment(SwingConstants.CENTER);
 		add(tituloRegistro);
@@ -56,13 +90,18 @@ public class PantallaRegistro extends JPanel {
 		
 		JLabel labelUsuario = new JLabel("Usuario");
 		labelUsuario.setForeground(Color.LIGHT_GRAY);
-		labelUsuario.setBounds(399, 221, 90, 35);
+		labelUsuario.setBounds(399, 163, 90, 35);
 		labelUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		labelUsuario.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		add(labelUsuario);
 		
 		campoUsuario = new JTextField();
-		campoUsuario.setBounds(254, 266, 382, 27);
+		campoUsuario.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		campoUsuario.setBounds(254, 201, 382, 28);
 		campoUsuario.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		add(campoUsuario);
 		campoUsuario.setColumns(10);
@@ -83,37 +122,24 @@ public class PantallaRegistro extends JPanel {
 		
 		JLabel labelContraseña = new JLabel("Contrase\u00F1a");
 		labelContraseña.setForeground(Color.LIGHT_GRAY);
-		labelContraseña.setBounds(387, 303, 119, 35);
+		labelContraseña.setBounds(387, 323, 119, 35);
 		labelContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		labelContraseña.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		add(labelContraseña);
 		
-		campoContraseña = new JTextField();
-		campoContraseña.setBounds(254, 348, 382, 27);
-		campoContraseña.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		add(campoContraseña);
-		campoContraseña.setColumns(10);
-		
 		JButton botonRegistrarse = new BotonAzul("Registrarse");
 		botonRegistrarse.setBounds(362, 518, 169, 48);
-		botonRegistrarse.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String nombreUsuario=campoUsuario.getText();
-				//String contraseña=new String()
-				//String email=campoEmail.
-			}
-		});
+		
 		botonRegistrarse.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(Pais.values()));
-		comboBox.setBounds(310, 444, 283, 27);
-		add(comboBox);
+		final JComboBox seleccionPais = new JComboBox();
+		seleccionPais.setModel(new DefaultComboBoxModel(Pais.values()));
+		seleccionPais.setBounds(277, 461, 119, 27);
+		add(seleccionPais);
 		add(botonRegistrarse);
 		add(botonAtras);
 		
@@ -122,5 +148,23 @@ public class PantallaRegistro extends JPanel {
 		fondoLogo.setBounds(0, 0, 900, 701);
 		add(fondoLogo);
 		
+		botonRegistrarse.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String nombreUsuario=campoUsuario.getText();
+				String contraseña=new String(passwordField.getPassword());
+				String email=campoEmail.getText();
+				Pais pais= (Pais)seleccionPais.getSelectedItem();
+				try {
+					new Usuario(nombreUsuario,email,pais, null, contraseña);
+					JOptionPane.showMessageDialog(ventana,"Registrado con éxito",
+							"Registro Completado",JOptionPane.PLAIN_MESSAGE);
+					ventana.irAPantalla("login");
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 	}
 }

@@ -1,5 +1,8 @@
 package clases;
 
+import java.io.File;
+
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
 public class Cancion extends CosaConNombre{
@@ -18,6 +21,9 @@ public class Cancion extends CosaConNombre{
 		this.artista = artista;
 		this.duracion = duracion;
 		this.audio = audio;
+	}
+	public void cancion() {
+		
 	}
 	/**
 	 *Metodo get para la variable artista
@@ -52,6 +58,27 @@ public class Cancion extends CosaConNombre{
 	 * @return devuelve el valor de audio
 	 */
 	public Clip getAudio() {
+		
+		   try {
+	            
+	            // Se obtiene un Clip de sonido
+	            Clip sonido = AudioSystem.getClip();
+	            
+	            // Se carga con un fichero wav
+	            sonido.open(AudioSystem.getAudioInputStream(new File("Bon Jovi.wav")));
+	            
+	            // Comienza la reproducción
+	            sonido.start();
+	            
+	            // Espera mientras se esté reproduciendo.
+	            while (sonido.isRunning())
+	                Thread.sleep(1000);
+	            
+	            // Se cierra el clip.
+	            sonido.close();
+	        } catch (Exception e) {
+	            System.out.println("" + e);
+	        }
 		return audio;
 	}
 	/**

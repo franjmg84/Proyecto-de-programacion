@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
+import clases.Sonido;
 import clases.Usuario;
 import componentesvisuales.BotonAzul;
 
@@ -16,6 +17,13 @@ import java.awt.Color;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 public class PantallaLogin extends JPanel {
@@ -23,6 +31,7 @@ public class PantallaLogin extends JPanel {
 	private Ventana ventana;
 	private JTextField campoEmail;
 	private JPasswordField campoContraseña;
+	private Sonido sonido;
 	
 	public PantallaLogin(Ventana v) {
 		this.ventana=v;
@@ -36,7 +45,7 @@ public class PantallaLogin extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				String nombre=campoEmail.getText();
 				String contraseña=new String(campoContraseña.getPassword());
-				//ventana.usuarioLogeado=new Usuario(nombre,contraseña);
+				ventana.irAPantalla("estilo");
 			}
 		});
 		botonLogin.addActionListener(new ActionListener() {
@@ -79,7 +88,7 @@ public class PantallaLogin extends JPanel {
 		add(campoEmail);
 		campoEmail.setColumns(10);
 		
-		JLabel email = new JLabel("Nombre");
+		JLabel email = new JLabel("Email");
 		email.setForeground(Color.LIGHT_GRAY);
 		email.setFont(new Font("Dubai Medium", Font.PLAIN, 20));
 		email.setHorizontalAlignment(SwingConstants.CENTER);
@@ -103,7 +112,42 @@ public class PantallaLogin extends JPanel {
 		botonCerrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+				
+			            
+			            // Se obtiene un Clip de sonido
+			            Clip sonido = null;
+						try {
+							sonido = AudioSystem.getClip();
+						} catch (LineUnavailableException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			            
+			            // Se carga con un fichero wav
+			            try {
+							sonido.open(AudioSystem.getAudioInputStream(new File("Bon Jovi.wav")));
+						} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			            
+			            // Comienza la reproducción
+			            sonido.start();
+			            
+			            // Espera mientras se esté reproduciendo.
+			            while (sonido.isRunning())
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+			            
+			            // Se cierra el clip.
+			            sonido.close();
+			       
+				
+				//System.exit(0);
 			}
 		});
 		botonCerrar.setToolTipText("Pincha aqui para cerrar");
