@@ -41,7 +41,7 @@ public class Ventana extends JFrame {
 		this.setContentPane(this.pantallaActual);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		//this.setContentPane(new PantallaLogin(this));
+	
 		
 	}
 	public void irAPantalla(String nombrePantalla) {

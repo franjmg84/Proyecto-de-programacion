@@ -22,8 +22,7 @@ public class Usuario extends Persona {
 	private String email;
 
 	/**
-	 * @param nombre
-	 * @param genero
+	 * @param nombreo
 	 * @param pais
 	 * @param idioma
 	 * @param email
@@ -40,12 +39,9 @@ public class Usuario extends Persona {
 			throw new PassInvalidException("La contraseña debe tener al menos 3 caracteres.");
 		}
 		Statement smt = ConexionBD.conectar();
-		if (smt.executeUpdate("insert into usuario values('" + email + "','" + nombre + "','" + pais + "','" + idioma
+		if (smt.executeUpdate("insert into usuario values('" + email + "','" + pass + "','" + nombre + "','" + pais + "','" + idioma
 				+ "','" + pass + "')") > 0) {
 			this.email = email;
-			this.nombre = nombre;
-			this.pais = pais;
-			this.idioma = idioma;
 			this.pass = pass;
 
 		} else {
