@@ -2,6 +2,7 @@ package interfacesGraficas;
 
 import javax.swing.JPanel;
 
+
 import clases.Usuario;
 
 import java.awt.Cursor;

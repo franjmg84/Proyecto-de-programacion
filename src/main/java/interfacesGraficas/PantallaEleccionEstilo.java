@@ -49,7 +49,7 @@ public class PantallaEleccionEstilo extends JPanel {
 		botonEntrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+			
 				ventana.irAPantalla("juego");
 			}
 		});

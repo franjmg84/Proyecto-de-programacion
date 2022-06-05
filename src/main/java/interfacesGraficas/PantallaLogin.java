@@ -122,7 +122,7 @@ public class PantallaLogin extends JPanel {
 		this.add(botonCerrar);
 		
 		
-		MusicaFondo musica= new MusicaFondo(new File("./Musicaseries/los simpson - esta yegua.wav"));
+		MusicaFondo musica= new MusicaFondo(new File("./Bon Jovi.wav"));
 		musica.start();
 		
 		campoContraseña = new JPasswordField();

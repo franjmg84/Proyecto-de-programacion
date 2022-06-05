@@ -33,7 +33,7 @@ public class Artista extends Persona {
 	}
 
 	/**
-	 *Metodo set pata la variable foto
+	 *Metodo set para la variable foto
 	 * @param foto el nuevo valor de  foto
 	 */
 	public void setFoto(BufferedImage foto) {

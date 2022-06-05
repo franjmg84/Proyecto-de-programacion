@@ -91,6 +91,23 @@ public class Usuario extends Persona {
 		ConexionBD.desconectar();
 	}
 	
+	protected Usuario(String email) throws SQLException, UsuarioNoExisteException {
+
+		Statement smt = ConexionBD.conectar();
+		ResultSet cursor = smt.executeQuery("select * from usuarios where email='" + email + "'");
+		// Aqu� podemos usar if en vez de while porque si el email est�, solo va a estar
+		// una vez, porque es la PK
+		if (cursor.next()) {
+			this.email = cursor.getString("email");
+			this.pass = cursor.getString("pass");
+			this.nombre = cursor.getString("nombre");
+			
+		} else {
+			ConexionBD.desconectar();
+			throw new UsuarioNoExisteException("No existe ese email en la BD");
+		}
+		ConexionBD.desconectar();
+	}
 
 	/**
 	 * Metodo get para la variable pass
