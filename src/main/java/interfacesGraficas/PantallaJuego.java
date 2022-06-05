@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import componentesvisuales.BotonAzul;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PantallaJuego extends JPanel {
@@ -20,22 +23,26 @@ public class PantallaJuego extends JPanel {
 	public PantallaJuego(Ventana v) {
 		setLayout(null);
 		
-		JButton btnNewButton = new JButton("PLAY");
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ventana.irAPantalla("juego");
-				
+		BotonAzul botonPlay = new BotonAzul("Atras");
+		botonPlay.setText("Play");
+		botonPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 48));
-		btnNewButton.setBounds(264, 343, 351, 90);
-		add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(PantallaJuego.class.getResource("/imagenes/fondo con logo3.png")));
-		lblNewLabel.setBounds(0, 0, 900, 700);
-		add(lblNewLabel);
+		BotonAzul botonStop = new BotonAzul("Atras");
+		botonStop.setText("Stop");
+		botonStop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		botonStop.setBounds(565, 223, 169, 48);
+		add(botonStop);
+		botonPlay.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		botonPlay.setBounds(176, 223, 169, 48);
+		add(botonPlay);
+		
+		JLabel fondoJuego = new JLabel("");
+		fondoJuego.setIcon(new ImageIcon(PantallaJuego.class.getResource("/imagenes/fondo juego rockola.png")));
+		fondoJuego.setBounds(0, 0, 900, 700);
+		add(fondoJuego);
 		
 	
 	}

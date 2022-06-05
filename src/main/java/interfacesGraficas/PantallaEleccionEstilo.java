@@ -14,15 +14,28 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PantallaEleccionEstilo extends JPanel {
 	
 		private Ventana ventana;
 		
 		public PantallaEleccionEstilo(Ventana v) {
+			this.ventana = v;
 		setLayout(null);
 		
-		BotonAzul botonAtras = new BotonAzul("Atras");
+		JButton botonAtras = new JButton("Atras");
+		botonAtras.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irAPantalla("login");
+			}
+		});
+		botonAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		botonAtras.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonAtras.setBounds(681, 589, 169, 48);
 		add(botonAtras);
