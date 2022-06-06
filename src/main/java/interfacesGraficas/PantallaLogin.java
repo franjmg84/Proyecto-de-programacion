@@ -125,6 +125,7 @@ public class PantallaLogin extends JPanel {
 		MusicaFondo musica= new MusicaFondo(new File("./Bon Jovi.wav"));
 		musica.start();
 		
+		
 		campoContraseña = new JPasswordField();
 		campoContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		campoContraseña.setBounds(257, 347, 383, 27);

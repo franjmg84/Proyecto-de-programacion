@@ -10,9 +10,6 @@ import enumeraciones.Pais;
 import excepciones.PassInvalidException;
 import excepciones.UsuarioNoExisteException;
 
-
-
-
 import excepciones.NombreInvalidoException;
 import utils.ConexionBD;
 
@@ -22,10 +19,10 @@ public class Usuario extends Persona {
 	private String email;
 
 	/**
-	 * @param nombreo
+	 * @param email
+	 * @param nombre
 	 * @param pais
 	 * @param idioma
-	 * @param email
 	 * @param pass
 	 * @throws SQLException
 	 * @throws PassInvalidException
@@ -39,8 +36,8 @@ public class Usuario extends Persona {
 			throw new PassInvalidException("La contraseña debe tener al menos 3 caracteres.");
 		}
 		Statement smt = ConexionBD.conectar();
-		if (smt.executeUpdate("insert into usuario values('" + email + "','" + pass + "','" + nombre + "','" + pais + "','" + idioma
-				+ "','" + pass + "')") > 0) {
+		if (smt.executeUpdate("insert into usuario values('" + email + "','" + pass + "','" + nombre + "','" + pais
+				+ "','" + idioma + "','" + pass + "')") > 0) {
 			this.email = email;
 			this.pass = pass;
 
@@ -52,56 +49,16 @@ public class Usuario extends Persona {
 		ConexionBD.desconectar();
 	}
 
-	public Usuario(String pass, String email) throws PassInvalidException {
-		super();
-		
-		// Proteger los setters
-		if (!isPassValid(pass)) {
-			throw new PassInvalidException("La contraseña debe tener al menos 3 caracteres.");
-		}
-
-		Statement smt = ConexionBD.conectar();
-		
-		
-		try {
-			
-			ResultSet cursor = smt.executeQuery("select * from usuarios where email='" + email + "'");
-			if (cursor.next()) {
-				this.pass = cursor.getString("pass");
-				if (!this.pass.equals(pass)) {
-					ConexionBD.desconectar();
-					throw new PassInvalidException("La contraseña no es correcta");
-				}
-				this.email = cursor.getString("email");
-				
-			} else {
-				ConexionBD.desconectar();
-				throw new UsuarioNoExisteException("No existe ese email en la BD");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (PassInvalidException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UsuarioNoExisteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		ConexionBD.desconectar();
-	}
-	
 	protected Usuario(String email) throws SQLException, UsuarioNoExisteException {
 
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from usuarios where email='" + email + "'");
-		// Aquï¿½ podemos usar if en vez de while porque si el email estï¿½, solo va a estar
-		// una vez, porque es la PK
+		
 		if (cursor.next()) {
 			this.email = cursor.getString("email");
 			this.pass = cursor.getString("pass");
 			this.nombre = cursor.getString("nombre");
-			
+
 		} else {
 			ConexionBD.desconectar();
 			throw new UsuarioNoExisteException("No existe ese email en la BD");
@@ -131,6 +88,31 @@ public class Usuario extends Persona {
 
 	}
 
+	protected Usuario(String email, String pass)
+			throws SQLException, PassInvalidException, UsuarioNoExisteException, PassInvalidException {
+
+			// Proteger los setters
+		if (!isPassValid(pass)) {
+			throw new PassInvalidException("La contraseña debe tener al menos 3 caracteres.");
+		}
+
+		Statement smt = ConexionBD.conectar();
+		ResultSet cursor = smt.executeQuery("select * from usuarios where email='" + email + "'");
+		
+		if (cursor.next()) {
+			this.pass = cursor.getString("pass");
+			if (!this.pass.equals(pass)) {
+				ConexionBD.desconectar();
+				throw new PassInvalidException("La contraseña no es correcta");
+			}
+			this.email = cursor.getString("email");
+			this.nombre = cursor.getString("nombre");
+		} else {
+			ConexionBD.desconectar();
+			throw new UsuarioNoExisteException("No existe ese email en la BD");
+		}
+		ConexionBD.desconectar();
+	}
 	/**
 	 * Metodo set pata la variable pass
 	 * 
@@ -157,9 +139,10 @@ public class Usuario extends Persona {
 		}
 		ConexionBD.desconectar();
 	}
+
 	@Override
 	public String toString() {
-		return "Usuario [pass=" + pass + "]";
+		return "Usuario [nombre=" + nombre + ", email=" + email + "]";
 	}
 
 }

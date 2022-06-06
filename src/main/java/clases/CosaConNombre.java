@@ -1,5 +1,7 @@
 package clases;
 
+import excepciones.NombreInvalidoException;
+
 public class CosaConNombre {
 	
 	protected String nombre;
@@ -17,15 +19,21 @@ public class CosaConNombre {
 	 * @return devuelve el valor de nombre
 	 */
 	public String getNombre() {
+
 		return nombre;
 	}
 
 	/**
-	 *Metodo set pata la variable nombre
+	 *Metodo set para la variable nombre
 	 * @param nombre el nuevo valor de  nombre
+	 * @throws NombreInvalidoException 
 	 */
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre) throws NombreInvalidoException {
+		if(nombre.isBlank()) {
+			throw new NombreInvalidoException("El nombre no puede estar vacio");
+		}else {
 		this.nombre = nombre;
+		}
 	}
 
 	@Override
