@@ -9,7 +9,6 @@ import enumeraciones.Idioma;
 import enumeraciones.Pais;
 import excepciones.PassInvalidException;
 import excepciones.UsuarioNoExisteException;
-
 import excepciones.NombreInvalidoException;
 import utils.ConexionBD;
 
@@ -37,7 +36,7 @@ public class Usuario extends Persona {
 		}
 		Statement smt = ConexionBD.conectar();
 		if (smt.executeUpdate("insert into usuario values('" + email + "','" + pass + "','" + nombre + "','" + pais
-				+ "','" + idioma + "','" + pass + "')") > 0) {
+				+ "','" + idioma +"', '"+0+"')") > 0) {
 			this.email = email;
 			this.pass = pass;
 
@@ -94,8 +93,9 @@ public class Usuario extends Persona {
 			// Proteger los setters
 		if (!isPassValid(pass)) {
 			throw new PassInvalidException("La contraseña debe tener al menos 3 caracteres.");
+			
 		}
-
+		System.out.println("Estoy dentro");
 		Statement smt = ConexionBD.conectar();
 		ResultSet cursor = smt.executeQuery("select * from usuarios where email='" + email + "'");
 		
@@ -110,9 +110,11 @@ public class Usuario extends Persona {
 		} else {
 			ConexionBD.desconectar();
 			throw new UsuarioNoExisteException("No existe ese email en la BD");
+			
 		}
 		ConexionBD.desconectar();
 	}
+	
 	/**
 	 * Metodo set pata la variable pass
 	 * 

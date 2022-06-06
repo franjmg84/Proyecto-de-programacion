@@ -1,9 +1,9 @@
 package hilos;
 
 	// Cargar un clip de audio y reproducirlo.
-	import java.applet.*;
-	import java.awt.*;
-	import java.awt.event.*;
+	
+	
+	
 import java.io.File;
 import java.io.IOException;
 

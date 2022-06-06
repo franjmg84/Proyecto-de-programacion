@@ -18,7 +18,7 @@ import javax.swing.JFrame;
 
 public class Ventana extends JFrame {
 	
-	private HashMap<String,JPanel> pantallas;
+	
 	protected Usuario usuarioLogeado;
 	private JPanel pantallaActual;
 	protected ArrayList<File> cancionesPorJugar;
@@ -33,7 +33,7 @@ public class Ventana extends JFrame {
 
 		this.setSize(900,700);
 		this.setLocationRelativeTo(null);
-		this.setExtendedState(JFrame.HAND_CURSOR);
+		//this.setExtendedState(JFrame.HAND_CURSOR);
 		this.setTitle("Rockola");
 		this.setIconImage(new ImageIcon("./logoo.png").getImage());
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));

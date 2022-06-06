@@ -1,16 +1,21 @@
 package interfacesGraficas;
 
 import javax.swing.JPanel;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
+import com.mysql.cj.xdevapi.Statement;
+
 import clases.Sonido;
 import clases.Usuario;
 import componentesvisuales.BotonAzul;
+import excepciones.UsuarioNoExisteException;
 import hilos.MusicaFondo;
+import utils.ConexionBD;
 
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
@@ -21,6 +26,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -40,20 +47,50 @@ public class PantallaLogin extends JPanel {
 		setLayout(null);
 
 		JButton botonLogin = new BotonAzul("Login");
-		botonLogin.setBackground(Color.LIGHT_GRAY);
-		botonLogin.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 20));
-		botonLogin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				String nombre = campoEmail.getText();
-				String contraseña = new String(campoContraseña.getPassword());
-				ventana.irAPantalla("estilo");
-			}
-		});
 		botonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String email = campoEmail.getText();
+				String contraseña = new String(campoContraseña.getPassword());
+				System.out.println(email+contraseña);
+				  java.sql.Statement smt = ConexionBD.conectar();
+			        
+			       
+
+			        try { 
+			        	System.out.println("Dentro del try");
+			        	ResultSet consulta = smt.executeQuery("select * from usuario where email='"+email+"'");
+						if(consulta.next()){
+						  System.out.println("primer if");
+						  System.out.println(consulta.getString("pass"));
+						  System.out.println(contraseña);
+						    if(contraseña.equals(consulta.getString("pass")) ){
+						    	System.out.println("Segundo if");
+						    	 ConexionBD.desconectar();
+						    	ventana.irAPantalla("estilo");
+						    }
+						   
+						   
+						}else {System.out.println("Soy el else");
+						    ConexionBD.desconectar();
+						    //throw new UsuarioNoExisteException("No existe el mail en la BD");
+						}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
+						
+				//ventana.irAPantalla("estilo");
+			
 			}
 		});
+		botonLogin.setBackground(Color.LIGHT_GRAY);
+		botonLogin.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 20));
+		//botonLogin.addMouseListener(new MouseAdapter() {
+		
+		//});
+	
+		
 		botonLogin.setToolTipText("Pincha aqui para iniciar sesion");
 		botonLogin.setBounds(369, 455, 169, 53);
 		this.add(botonLogin);
@@ -123,7 +160,7 @@ public class PantallaLogin extends JPanel {
 		
 		
 		MusicaFondo musica= new MusicaFondo(new File("./Bon Jovi.wav"));
-		musica.start();
+		//musica.start();
 		
 		
 		campoContraseña = new JPasswordField();

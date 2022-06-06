@@ -26,8 +26,8 @@ import enumeraciones.Idioma;
 public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
 	private Ventana ventana;
-	private JPasswordField passwordField;
-	private JTextField textField;
+	private JPasswordField campoContraseña;
+	private JTextField campoEmail;
 	/**
 	 * Create the panel.
 	 */
@@ -35,10 +35,10 @@ public class PantallaRegistro extends JPanel {
 		this.ventana = v;
 		setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(Idioma.values()));
-		comboBox.setBounds(499, 461, 119, 27);
-		add(comboBox);
+		JComboBox seleccionIdioma = new JComboBox();
+		seleccionIdioma.setModel(new DefaultComboBoxModel(Idioma.values()));
+		seleccionIdioma.setBounds(499, 461, 119, 27);
+		add(seleccionIdioma);
 		
 		
 		
@@ -49,26 +49,26 @@ public class PantallaRegistro extends JPanel {
 		labelIdioma.setBounds(489, 423, 119, 28);
 		add(labelIdioma);
 		
-		textField = new JTextField();
-		textField.addMouseListener(new MouseAdapter() {
+		campoEmail = new JTextField();
+		campoEmail.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 			}
 		});
-		textField.setBounds(254, 284, 382, 28);
-		add(textField);
-		textField.setColumns(10);
-		
-		final JLabel campoEmail = new JLabel("Email");
-		campoEmail.setHorizontalAlignment(SwingConstants.CENTER);
-		campoEmail.setFont(new Font("Dubai Medium", Font.PLAIN, 20));
-		campoEmail.setForeground(Color.LIGHT_GRAY);
-		campoEmail.setBounds(399, 239, 88, 48);
+		campoEmail.setBounds(254, 284, 382, 28);
 		add(campoEmail);
+		campoEmail.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(254, 368, 382, 28);
-		add(passwordField);
+		final JLabel labelEmail = new JLabel("Email");
+		labelEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		labelEmail.setFont(new Font("Dubai Medium", Font.PLAIN, 20));
+		labelEmail.setForeground(Color.LIGHT_GRAY);
+		labelEmail.setBounds(399, 239, 88, 48);
+		add(labelEmail);
+		
+		campoContraseña = new JPasswordField();
+		campoContraseña.setBounds(254, 368, 382, 28);
+		add(campoContraseña);
 		
 		JLabel labelPais = new JLabel("Pais");
 		labelPais.setForeground(Color.LIGHT_GRAY);
@@ -152,11 +152,12 @@ public class PantallaRegistro extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String nombreUsuario=campoUsuario.getText();
-				String contraseña=new String(passwordField.getPassword());
+				String contraseña=new String(campoContraseña.getPassword());
 				String email=campoEmail.getText();
 				Pais pais= (Pais)seleccionPais.getSelectedItem();
-				try {
-					new Usuario(nombreUsuario,email,pais, null, contraseña);
+				Idioma idioma= (Idioma)seleccionIdioma.getSelectedItem();
+				try {//String email, String nombre, Pais pais, Idioma idioma, String pass
+					new Usuario(email, nombreUsuario, pais, idioma, contraseña);
 					JOptionPane.showMessageDialog(ventana,"Registrado con éxito",
 							"Registro Completado",JOptionPane.PLAIN_MESSAGE);
 					ventana.irAPantalla("login");
