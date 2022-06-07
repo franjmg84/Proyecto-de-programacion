@@ -2,6 +2,7 @@ package interfacesGraficas;
 
 import javax.swing.JPanel;
 
+
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -10,7 +11,7 @@ import javax.swing.border.MatteBorder;
 
 import com.mysql.cj.xdevapi.Statement;
 
-import clases.Sonido;
+
 import clases.Usuario;
 import componentesvisuales.BotonAzul;
 import excepciones.UsuarioNoExisteException;
@@ -40,7 +41,7 @@ public class PantallaLogin extends JPanel {
 	private Ventana ventana;
 	private JTextField campoEmail;
 	private JPasswordField campoContraseña;
-	private Sonido sonido;
+
 
 	public PantallaLogin(Ventana v) {
 		this.ventana = v;
@@ -160,7 +161,7 @@ public class PantallaLogin extends JPanel {
 		
 		
 		MusicaFondo musica= new MusicaFondo(new File("./Bon Jovi.wav"));
-		//musica.start();
+		musica.start();
 		
 		
 		campoContraseña = new JPasswordField();

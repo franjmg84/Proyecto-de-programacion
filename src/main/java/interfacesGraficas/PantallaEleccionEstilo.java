@@ -21,6 +21,9 @@ import java.awt.event.ActionEvent;
 public class PantallaEleccionEstilo extends JPanel {
 	
 		private Ventana ventana;
+		JRadioButton botonTv = new JRadioButton("Series de TV", false);
+		JRadioButton botonDance = new JRadioButton("Dance", false);
+		JRadioButton botonRockPop = new JRadioButton("  Rock - Pop", true);
 		
 		public PantallaEleccionEstilo(Ventana v) {
 			this.ventana = v;
@@ -44,40 +47,45 @@ public class PantallaEleccionEstilo extends JPanel {
 		JButton botonEntrar = new BotonAzul("Entrar");
 		botonEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		botonEntrar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-			
+				if(botonTv.isSelected()==true) {
 				ventana.irAPantalla("juego");
+				}
+				if(botonRockPop.isSelected()==true) {
+					
+				}
+				
+			
+				
 			}
 		});
+	;
 		botonEntrar.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonEntrar.setBounds(351, 491, 180, 56);
 		add(botonEntrar);
 		
-		JRadioButton botonDance = new JRadioButton("Dance");
+		
 		botonDance.setForeground(Color.BLACK);
 		botonDance.setBackground(new Color(255, 20, 147));
 		botonDance.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonDance.setBounds(375, 367, 137, 44);
 		add(botonDance);
 		
-		JRadioButton BotonRockPop = new JRadioButton("  Rock - Pop");
-		BotonRockPop.setBackground(new Color(255, 20, 147));
-		BotonRockPop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		BotonRockPop.setHorizontalAlignment(SwingConstants.LEFT);
-		BotonRockPop.setBounds(499, 273, 137, 46);
-		add(BotonRockPop);
 		
-		JRadioButton botonTv = new JRadioButton("Series de TV");
-		botonTv.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
+		botonRockPop.setBackground(new Color(255, 20, 147));
+		botonRockPop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		botonRockPop.setHorizontalAlignment(SwingConstants.LEFT);
+		botonRockPop.setBounds(499, 273, 137, 46);
+		add(botonRockPop);
+		
+		
+		botonTv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				
+				ventana.irAPantalla("juego");
 			}
 		});
+	
+		;
 		botonTv.setBackground(new Color(255, 20, 147));
 		botonTv.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
 		botonTv.setHorizontalAlignment(SwingConstants.LEFT);

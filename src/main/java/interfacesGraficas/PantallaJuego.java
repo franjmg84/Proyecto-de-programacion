@@ -4,6 +4,7 @@ package interfacesGraficas;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -16,6 +17,7 @@ import java.awt.event.ActionEvent;
 
 public class PantallaJuego extends JPanel {
 	private Ventana ventana;
+	private Clip musica;
 	/**
 	 * Create the panel.
 	 * @param ventana 
