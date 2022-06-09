@@ -4,14 +4,21 @@ import javax.swing.JPanel;
 
 
 import clases.Usuario;
+import hilos.MusicaFondo;
 
 import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -23,6 +30,7 @@ public class Ventana extends JFrame {
 	private JPanel pantallaActual;
 	protected ArrayList<File> cancionesPorJugar;
 	protected ArrayList<File> cancionesJugadas;
+	protected Clip clip;
 	/**
 	 * Create the panel.
 	 */
@@ -30,7 +38,23 @@ public class Ventana extends JFrame {
 		this.cancionesPorJugar= new ArrayList<File>();
 		this.cancionesJugadas=new ArrayList<File>();
 		
-
+		/*try {
+			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./popRock/Bon Jovi.wav"));
+			this.clip = AudioSystem.getClip();
+			clip.open(archivo);
+			
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		
 		this.setSize(900,700);
 		this.setLocationRelativeTo(null);
 		//this.setExtendedState(JFrame.HAND_CURSOR);
@@ -38,7 +62,7 @@ public class Ventana extends JFrame {
 		this.setIconImage(new ImageIcon("./logoo.png").getImage());
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		this.setResizable(false);
-		this.pantallaActual=new PantallaLogin(this);
+		this.pantallaActual=new PantallaLogin(this,clip);
 		this.setContentPane(this.pantallaActual);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
@@ -55,16 +79,16 @@ public class Ventana extends JFrame {
 		this.pantallaActual=null;
 		switch (nombrePantalla) {
 		case "login":
-			this.pantallaActual=new PantallaLogin(this);
+			this.pantallaActual=new PantallaLogin(this,clip);
 			break;
 		case "registro":
 			this.pantallaActual=new PantallaRegistro(this);
 			break;
 		case "estilo":
-			this.pantallaActual=new PantallaEleccionEstilo(this);
+			this.pantallaActual=new PantallaEleccionEstilo(this,clip);
 			break;
 		case "juego":
-			this.pantallaActual=new PantallaJuego(this);
+			this.pantallaActual=new PantallaJuego(this, clip);
 			break;
 		default:
 			break;

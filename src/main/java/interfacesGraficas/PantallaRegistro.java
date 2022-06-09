@@ -1,6 +1,7 @@
 package interfacesGraficas;
 
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +36,7 @@ public class PantallaRegistro extends JPanel {
 		this.ventana = v;
 		setLayout(null);
 		
-		JComboBox seleccionIdioma = new JComboBox();
+		final JComboBox seleccionIdioma = new JComboBox();
 		seleccionIdioma.setModel(new DefaultComboBoxModel(Idioma.values()));
 		seleccionIdioma.setBounds(499, 461, 119, 27);
 		add(seleccionIdioma);
@@ -154,6 +155,7 @@ public class PantallaRegistro extends JPanel {
 				String nombreUsuario=campoUsuario.getText();
 				String contraseña=new String(campoContraseña.getPassword());
 				String email=campoEmail.getText();
+				
 				Pais pais= (Pais)seleccionPais.getSelectedItem();
 				Idioma idioma= (Idioma)seleccionIdioma.getSelectedItem();
 				try {//String email, String nombre, Pais pais, Idioma idioma, String pass

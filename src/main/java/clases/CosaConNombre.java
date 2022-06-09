@@ -2,7 +2,7 @@ package clases;
 
 import excepciones.NombreInvalidoException;
 
-public class CosaConNombre {
+public abstract class  CosaConNombre {
 	
 	protected String nombre;
 

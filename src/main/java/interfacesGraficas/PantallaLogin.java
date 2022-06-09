@@ -43,7 +43,7 @@ public class PantallaLogin extends JPanel {
 	private JPasswordField campoContraseña;
 
 
-	public PantallaLogin(Ventana v) {
+	public PantallaLogin(Ventana v,Clip a) {
 		this.ventana = v;
 		setLayout(null);
 
@@ -81,10 +81,32 @@ public class PantallaLogin extends JPanel {
 					}
 				
 						
-				//ventana.irAPantalla("estilo");
+				ventana.irAPantalla("estilo");
 			
 			}
 		});
+		
+		JButton btnMusicOn = new JButton("Play");
+		btnMusicOn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnMusicOn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ventana.clip.start();
+			}
+		});
+		btnMusicOn.setBounds(59, 42, 85, 27);
+		add(btnMusicOn);
+		
+		JButton btnNewButton = new JButton("Stop");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				ventana.clip.stop();
+;			}
+		});
+		btnNewButton.setBounds(775, 42, 85, 27);
+		add(btnNewButton);
 		botonLogin.setBackground(Color.LIGHT_GRAY);
 		botonLogin.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 20));
 		//botonLogin.addMouseListener(new MouseAdapter() {
@@ -160,8 +182,7 @@ public class PantallaLogin extends JPanel {
 		this.add(botonCerrar);
 		
 		
-		MusicaFondo musica= new MusicaFondo(new File("./Bon Jovi.wav"));
-		musica.start();
+		
 		
 		
 		campoContraseña = new JPasswordField();

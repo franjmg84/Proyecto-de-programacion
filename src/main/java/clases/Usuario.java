@@ -115,6 +115,7 @@ public class Usuario extends Persona {
 		ConexionBD.desconectar();
 	}
 	
+	
 	/**
 	 * Metodo set pata la variable pass
 	 * 

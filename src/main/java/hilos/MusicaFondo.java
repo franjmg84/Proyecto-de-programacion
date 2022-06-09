@@ -21,21 +21,6 @@ import javax.swing.*;
 		public void run() {
 			// TODO Auto-generated method stub
 			super.run();
-			try {
-				Clip reproductor = AudioSystem.getClip();
-				AudioInputStream archivo = AudioSystem.getAudioInputStream(musica);
-				reproductor.open(archivo);
-				reproductor.start();
-			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (UnsupportedAudioFileException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
 			
 		}
