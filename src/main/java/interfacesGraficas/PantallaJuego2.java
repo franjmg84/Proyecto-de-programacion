@@ -22,6 +22,8 @@ import componentesvisuales.BotonAzul;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.awt.Color;
+import javax.swing.SwingConstants;
 
 
 public class PantallaJuego2 extends JPanel {

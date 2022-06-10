@@ -30,7 +30,7 @@ public class BotonAzul extends JButton {
 		this.setBackground(new Color(211, 211, 211));
 		this.setForeground(new Color(0, 0, 0));
 		this.setBorder(
-				new MatteBorder(3,3,3,3,new Color(200,0,0)));
+				new MatteBorder(3,3,3,3,new Color(255,215,0)));
 		this.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 18));
 	}
 }
