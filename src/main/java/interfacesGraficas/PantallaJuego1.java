@@ -35,7 +35,7 @@ public class PantallaJuego1 extends JPanel {
 	public PantallaJuego1(Ventana v, Clip clip) {
 		this.ventana=v;
 		try {
-			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./musica/dance/Mambo Zenaida.wav"));
+			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./musica/ACDC.wav"));
 			this.musica = AudioSystem.getClip();
 			musica.open(archivo);
 			
@@ -79,7 +79,7 @@ public class PantallaJuego1 extends JPanel {
 		botonRespuesta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				musica.stop();
 				ventana.irAPantalla("juego2");
 				
 			}
@@ -100,7 +100,7 @@ public class PantallaJuego1 extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				
+				musica.stop();
 				ventana.irAPantalla("juego2");
 			}
 		});
@@ -113,7 +113,7 @@ public class PantallaJuego1 extends JPanel {
 		JButton botonRespuesta2 = new BotonAzul("Respuesta 2");
 		botonRespuesta2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				musica.stop();
 				ventana.irAPantalla("juego2");
 				
 			}
@@ -125,7 +125,7 @@ public class PantallaJuego1 extends JPanel {
 		JButton botonRespuesta1 = new BotonAzul("Respuesta 1");
 		botonRespuesta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				musica.stop();
 				
 				ventana.irAPantalla("juego2");
 			}
@@ -134,7 +134,7 @@ public class PantallaJuego1 extends JPanel {
 		botonRespuesta1.setBounds(207, 285, 216, 48);
 		add(botonRespuesta1);
 		
-		BotonAzul botonStop = new BotonAzul("Atras");
+		BotonAzul botonStop = new BotonAzul("Stop");
 		botonStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				musica.stop();
@@ -142,10 +142,10 @@ public class PantallaJuego1 extends JPanel {
 		});
 		botonStop.setText("Stop");
 		botonStop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		botonStop.setBounds(501, 184, 132, 48);
+		botonStop.setBounds(693, 53, 132, 48);
 		add(botonStop);
 		BotonConSonido.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		BotonConSonido.setBounds(257, 184, 132, 48);
+		BotonConSonido.setBounds(57, 53, 132, 48);
 		add(BotonConSonido);
 		
 		JLabel fondoJuego = new JLabel("");
@@ -153,6 +153,6 @@ public class PantallaJuego1 extends JPanel {
 		fondoJuego.setBounds(0, 0, 900, 700);
 		add(fondoJuego);
 		
-	
+		
 	}
 }

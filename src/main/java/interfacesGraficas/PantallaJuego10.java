@@ -23,6 +23,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
+import clases.Cancion;
+import clases.CancionConOpcion;
+
 
 public class PantallaJuego10 extends JPanel {
 	private Ventana ventana;
@@ -32,10 +35,10 @@ public class PantallaJuego10 extends JPanel {
 	 * @param clip 
 	 * @param ventana 
 	 */
-	public PantallaJuego10(Ventana v, Clip clip) {
+	public PantallaJuego10(Ventana v, CancionConOpcion c) {
 		this.ventana=v;
 		try {
-			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./musica/dance/Mambo Zenaida.wav"));
+			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File(c.getRuta()));
 			this.musica = AudioSystem.getClip();
 			musica.open(archivo);
 			
@@ -74,7 +77,7 @@ public class PantallaJuego10 extends JPanel {
 			}
 		});
 		
-		JButton botonRespuesta3 = new BotonAzul("Respuesta 3");
+		JButton botonRespuesta3 = new BotonAzul(c.getRespuestasPosibles().get(2));
 		botonRespuesta3.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		botonRespuesta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -95,7 +98,7 @@ public class PantallaJuego10 extends JPanel {
 		botonSalir.setBounds(387, 517, 125, 48);
 		add(botonSalir);
 		
-		JButton botonRespuesta4 = new BotonAzul("Respuesta 4");
+		JButton botonRespuesta4 = new BotonAzul(c.getRespuestasPosibles().get(3));
 		botonRespuesta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -110,7 +113,7 @@ public class PantallaJuego10 extends JPanel {
 		botonRespuesta3.setBounds(207, 383, 216, 48);
 		add(botonRespuesta3);
 		
-		JButton botonRespuesta2 = new BotonAzul("Respuesta 2");
+		JButton botonRespuesta2 = new BotonAzul(c.getRespuestasPosibles().get(1));
 		botonRespuesta2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -122,7 +125,7 @@ public class PantallaJuego10 extends JPanel {
 		botonRespuesta2.setBounds(467, 285, 216, 48);
 		add(botonRespuesta2);
 		
-		JButton botonRespuesta1 = new BotonAzul("Respuesta 1");
+		JButton botonRespuesta1 = new BotonAzul(c.getRespuestasPosibles().get(0));
 		botonRespuesta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

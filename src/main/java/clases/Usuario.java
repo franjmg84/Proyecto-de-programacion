@@ -12,19 +12,26 @@ import excepciones.UsuarioNoExisteException;
 import excepciones.NombreInvalidoException;
 import utils.ConexionBD;
 
+/**
+ * lo que hace
+ * @author djfra
+ *
+ */
 public class Usuario extends Persona {
-
+	/** para que sirve */
 	private String pass;
+	/** para que sirve */
 	private String email;
 
 	/**
-	 * @param email
-	 * @param nombre
+	 * kaefowkoaewafew
+	 * @param email fea fea
+	 * @param nombre feaaf 
 	 * @param pais
-	 * @param idioma
+	 * @param idio afew fema
 	 * @param pass
-	 * @throws SQLException
-	 * @throws PassInvalidException
+	 * @throws SQLException faeaef w efw
+	 * @throws PassInvalidException fawf aew
 	 */
 	public Usuario(String email, String nombre, Pais pais, Idioma idioma, String pass)
 			throws SQLException, PassInvalidException {

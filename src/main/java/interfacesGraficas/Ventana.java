@@ -2,7 +2,8 @@ package interfacesGraficas;
 
 import javax.swing.JPanel;
 
-
+import clases.Cancion;
+import clases.CancionJugada;
 import clases.Usuario;
 import hilos.MusicaFondo;
 
@@ -28,17 +29,17 @@ public class Ventana extends JFrame {
 	
 	protected Usuario usuarioLogeado;
 	private JPanel pantallaActual;
-	protected ArrayList<File> cancionesPorJugar;
-	protected ArrayList<File> cancionesJugadas;
+	protected ArrayList<Cancion> cancionesPorJugar;
+	protected ArrayList<CancionJugada> cancionesJugadas;
 	protected Clip clip;
 	/**
 	 * Create the panel.
 	 */
 	public Ventana() {
-		this.cancionesPorJugar= new ArrayList<File>();
-		this.cancionesJugadas=new ArrayList<File>();
+		this.cancionesPorJugar= new ArrayList<Cancion>();
+		this.cancionesJugadas=new ArrayList<CancionJugada>();
 		
-		/*try {
+		try {
 			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./popRock/Bon Jovi.wav"));
 			this.clip = AudioSystem.getClip();
 			clip.open(archivo);
@@ -52,7 +53,7 @@ public class Ventana extends JFrame {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
 		
 		this.setSize(900,700);
@@ -103,27 +104,29 @@ public class Ventana extends JFrame {
 			this.pantallaActual=new PantallaJuego5(this, clip);
 			break;
 		case "juego6":
-			this.pantallaActual=new PantallaJuego6(this, clip);
+			this.pantallaActual=new PantallaJuego6(this);
 			break;
 		case "juego7":
-			this.pantallaActual=new PantallaJuego7(this, clip);
+			this.pantallaActual=new PantallaJuego7(this);
 			break;
 		case "juego8":
-			this.pantallaActual=new PantallaJuego8(this, clip);
+			this.pantallaActual=new PantallaJuego8(this);
 			break;
 		case "juego9":
-			this.pantallaActual=new PantallaJuego9(this, clip);
+			this.pantallaActual=new PantallaJuego9(this);
 			break;
 		case "juego10":
-			this.pantallaActual=new PantallaJuego10(this, clip);
+			this.pantallaActual=new PantallaJuego10(this);
 			break;
 		default:
 			break;
 	}
+		
 	this.pantallaActual.setVisible(true);
 	this.setContentPane(pantallaActual);
 		//this.pantallas.get(nombrePantalla).setVisible(true);
 		//this.setContentPane(this.pantallas.get(nombrePantalla));
 	
 	}
+	
 }

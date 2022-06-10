@@ -9,9 +9,7 @@ import javax.sound.sampled.Clip;
 public class Cancion extends CosaConNombre{
 	
 	private Artista artista;
-
-	private float duracion;
-	private Clip audio;
+	private String ruta;
 	/**
 	 * @param nombre
 	 * @param artista
@@ -21,8 +19,8 @@ public class Cancion extends CosaConNombre{
 	public Cancion(String nombre, Artista artista, float duracion, Clip audio) {
 		super(nombre);
 		this.artista = artista;
-		this.duracion = duracion;
-		this.audio = audio;
+		
+		
 	}
 	public void cancion() {
 		
@@ -41,25 +39,8 @@ public class Cancion extends CosaConNombre{
 	public void setArtista(Artista artista) {
 		this.artista = artista;
 	}
-	/**
-	 *Metodo get para la variable duracion
-	 * @return devuelve el valor de duracion
-	 */
-	public float getDuracion() {
-		return duracion;
-	}
-	/**
-	 *Metodo set pata la variable duracion
-	 * @param duracion el nuevo valor de  duracion
-	 */
-	public void setDuracion(float duracion) {
-		this.duracion = duracion;
-	}
-	/**
-	 *Metodo get para la variable audio
-	 * @return devuelve el valor de audio
-	 */
-	public Clip getAudio() {
+	
+	public Clip getRuta() {
 		
 		   try {
 	            
@@ -81,18 +62,17 @@ public class Cancion extends CosaConNombre{
 	        } catch (Exception e) {
 	            System.out.println("" + e);
 	        }
-		return audio;
+		return getRuta();
 	}
 	/**
 	 *Metodo set pata la variable audio
 	 * @param audio el nuevo valor de  audio
 	 */
-	public void setAudio(Clip audio) {
-		this.audio = audio;
-	}
+	
+	
 	@Override
 	public String toString() {
-		return "Cancion [artista=" + artista + ", duracion=" + duracion + ", audio=" + audio + "]";
+		return "Cancion [artista=" + artista + "]";
 	}
 	
 	
