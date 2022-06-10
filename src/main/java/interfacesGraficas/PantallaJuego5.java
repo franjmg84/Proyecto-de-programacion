@@ -74,64 +74,64 @@ public class PantallaJuego5 extends JPanel {
 			}
 		});
 		
-		JButton botonRespuesta3 = new JButton("Respuesta 3");
+		JButton botonRespuesta3 = new BotonAzul("Respuesta 3");
 		botonRespuesta3.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		botonRespuesta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				ventana.irAPantalla("juego2");
+				ventana.irAPantalla("juego6");
 				
 			}
 		});
 		
-		JButton botonSalir = new JButton("Salir");
+		JButton botonSalir = new BotonAzul("Salir");
 		botonSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
 		botonSalir.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		botonSalir.setBounds(724, 597, 125, 48);
+		botonSalir.setBounds(387, 517, 125, 48);
 		add(botonSalir);
 		
-		JButton botonRespuesta4 = new JButton("Respuesta 4");
+		JButton botonRespuesta4 = new BotonAzul("Respuesta 4");
 		botonRespuesta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
 				
-				ventana.irAPantalla("juego2");
+				ventana.irAPantalla("juego6");
 			}
 		});
 		botonRespuesta4.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		botonRespuesta4.setBounds(488, 501, 361, 48);
+		botonRespuesta4.setBounds(467, 383, 216, 48);
 		add(botonRespuesta4);
-		botonRespuesta3.setBounds(50, 501, 361, 48);
+		botonRespuesta3.setBounds(207, 383, 216, 48);
 		add(botonRespuesta3);
 		
-		JButton botonRespuesta2 = new JButton("Respuesta 2");
+		JButton botonRespuesta2 = new BotonAzul("Respuesta 2");
 		botonRespuesta2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ventana.irAPantalla("juego2");
+				ventana.irAPantalla("juego6");
 				
 			}
 		});
 		botonRespuesta2.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		botonRespuesta2.setBounds(488, 366, 361, 48);
+		botonRespuesta2.setBounds(467, 285, 216, 48);
 		add(botonRespuesta2);
 		
-		JButton botonRespuesta1 = new JButton("Respuesta 1");
+		JButton botonRespuesta1 = new BotonAzul("Respuesta 1");
 		botonRespuesta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				ventana.irAPantalla("juego2");
+				ventana.irAPantalla("juego6");
 			}
 		});
 		botonRespuesta1.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		botonRespuesta1.setBounds(50, 366, 361, 48);
+		botonRespuesta1.setBounds(207, 285, 216, 48);
 		add(botonRespuesta1);
 		
 		BotonAzul botonStop = new BotonAzul("Atras");
@@ -142,14 +142,14 @@ public class PantallaJuego5 extends JPanel {
 		});
 		botonStop.setText("Stop");
 		botonStop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		botonStop.setBounds(527, 170, 231, 83);
+		botonStop.setBounds(501, 184, 132, 48);
 		add(botonStop);
 		BotonConSonido.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		BotonConSonido.setBounds(140, 170, 205, 83);
+		BotonConSonido.setBounds(257, 184, 132, 48);
 		add(BotonConSonido);
 		
 		JLabel fondoJuego = new JLabel("");
-		fondoJuego.setIcon(new ImageIcon(PantallaJuego5.class.getResource("/imagenes/fondo juego rockola.png")));
+		fondoJuego.setIcon(new ImageIcon(PantallaJuego5.class.getResource("/imagenes/fondo con logo.png")));
 		fondoJuego.setBounds(0, 0, 900, 700);
 		add(fondoJuego);
 		
