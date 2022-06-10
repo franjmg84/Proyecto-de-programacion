@@ -77,6 +77,7 @@ public class PantallaJuego extends JPanel {
 		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		
