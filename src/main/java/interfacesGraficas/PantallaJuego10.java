@@ -24,7 +24,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
 
-public class PantallaJuego extends JPanel {
+public class PantallaJuego10 extends JPanel {
 	private Ventana ventana;
 	private Clip musica;
 	/**
@@ -32,7 +32,7 @@ public class PantallaJuego extends JPanel {
 	 * @param clip 
 	 * @param ventana 
 	 */
-	public PantallaJuego(Ventana v, Clip clip) {
+	public PantallaJuego10(Ventana v, Clip clip) {
 		this.ventana=v;
 		try {
 			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./musica/dance/Mambo Zenaida.wav"));
@@ -62,21 +62,25 @@ public class PantallaJuego extends JPanel {
 		BotonConSonido.setText("Play");
 		BotonConSonido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				musica.start();
-				try {
-					Thread.sleep(15000);
+				
+				//try {
+					musica.start();
+					/*Thread.sleep(15000);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
-				musica.stop();
+				}*/
+				//musica.stop();
 			}
 		});
 		
-		JButton btnNewButton_2 = new JButton("Respuesta 3");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton botonRespuesta3 = new JButton("Respuesta 3");
+		botonRespuesta3.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		botonRespuesta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				ventana.irAPantalla("juego2");
 				
 			}
 		});
@@ -91,36 +95,49 @@ public class PantallaJuego extends JPanel {
 		botonSalir.setBounds(724, 597, 125, 48);
 		add(botonSalir);
 		
-		JButton btnNewButton_3 = new JButton("Respuesta 4");
-		btnNewButton_3.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		btnNewButton_3.setBounds(488, 484, 361, 48);
-		add(btnNewButton_3);
-		btnNewButton_2.setBounds(50, 484, 361, 48);
-		add(btnNewButton_2);
-		
-		JButton btnNewButton_1 = new JButton("Respuesta 2");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton botonRespuesta4 = new JButton("Respuesta 4");
+		botonRespuesta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				ventana.irAPantalla("juego2");
+			}
+		});
+		botonRespuesta4.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		botonRespuesta4.setBounds(488, 501, 361, 48);
+		add(botonRespuesta4);
+		botonRespuesta3.setBounds(50, 501, 361, 48);
+		add(botonRespuesta3);
+		
+		JButton botonRespuesta2 = new JButton("Respuesta 2");
+		botonRespuesta2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ventana.irAPantalla("juego2");
 				
 			}
 		});
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnNewButton_1.setBounds(488, 378, 361, 48);
-		add(btnNewButton_1);
+		botonRespuesta2.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		botonRespuesta2.setBounds(488, 366, 361, 48);
+		add(botonRespuesta2);
 		
-		JButton btnNewButton = new JButton("Respuesta 1");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton botonRespuesta1 = new JButton("Respuesta 1");
+		botonRespuesta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				ventana.irAPantalla("juego2");
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnNewButton.setBounds(50, 378, 361, 48);
-		add(btnNewButton);
+		botonRespuesta1.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		botonRespuesta1.setBounds(50, 366, 361, 48);
+		add(botonRespuesta1);
 		
 		BotonAzul botonStop = new BotonAzul("Atras");
 		botonStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				musica.close();
+				musica.stop();
 			}
 		});
 		botonStop.setText("Stop");
@@ -132,7 +149,7 @@ public class PantallaJuego extends JPanel {
 		add(BotonConSonido);
 		
 		JLabel fondoJuego = new JLabel("");
-		fondoJuego.setIcon(new ImageIcon(PantallaJuego.class.getResource("/imagenes/fondo juego rockola.png")));
+		fondoJuego.setIcon(new ImageIcon(PantallaJuego10.class.getResource("/imagenes/fondo juego rockola.png")));
 		fondoJuego.setBounds(0, 0, 900, 700);
 		add(fondoJuego);
 		

@@ -87,8 +87,35 @@ public class Ventana extends JFrame {
 		case "estilo":
 			this.pantallaActual=new PantallaEleccionEstilo(this,clip);
 			break;
-		case "juego":
-			this.pantallaActual=new PantallaJuego(this, clip);
+		case "juego1":
+			this.pantallaActual=new PantallaJuego1(this, clip);
+			break;
+		case "juego2":
+			this.pantallaActual=new PantallaJuego2(this, clip);
+			break;
+		case "juego3":
+			this.pantallaActual=new PantallaJuego3(this, clip);
+			break;
+		case "juego4":
+			this.pantallaActual=new PantallaJuego4(this, clip);
+			break;
+		case "juego5":
+			this.pantallaActual=new PantallaJuego5(this, clip);
+			break;
+		case "juego6":
+			this.pantallaActual=new PantallaJuego6(this, clip);
+			break;
+		case "juego7":
+			this.pantallaActual=new PantallaJuego7(this, clip);
+			break;
+		case "juego8":
+			this.pantallaActual=new PantallaJuego8(this, clip);
+			break;
+		case "juego9":
+			this.pantallaActual=new PantallaJuego9(this, clip);
+			break;
+		case "juego10":
+			this.pantallaActual=new PantallaJuego10(this, clip);
 			break;
 		default:
 			break;

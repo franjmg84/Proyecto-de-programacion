@@ -36,7 +36,7 @@ public class PantallaEleccionEstilo extends JPanel {
 			
 			this.ventana = v;
 			
-			try {
+			/*try {
 				AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./popRock/Bon Jovi.wav"));
 				this.musica = AudioSystem.getClip();
 				musica.open(archivo);
@@ -50,7 +50,7 @@ public class PantallaEleccionEstilo extends JPanel {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 		setLayout(null);
 		
@@ -71,48 +71,15 @@ public class PantallaEleccionEstilo extends JPanel {
 		
 	
 	;
-		
-		
-		final JRadioButton botonDance = new JRadioButton("Dance", false);
-		botonDance.setForeground(Color.BLACK);
-		botonDance.setBackground(new Color(255, 20, 147));
-		botonDance.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		botonDance.setBounds(375, 367, 137, 44);
-		add(botonDance);
-		
-		final JRadioButton botonRockPop = new JRadioButton("  Rock - Pop", true);
-		botonRockPop.setBackground(new Color(255, 20, 147));
-		botonRockPop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		botonRockPop.setHorizontalAlignment(SwingConstants.LEFT);
-		botonRockPop.setBounds(499, 273, 137, 46);
-		add(botonRockPop);
-	
-		
-		final JRadioButton botonTv = new JRadioButton("Series de TV", false);
-		botonTv.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		});
 	
 		;
-		botonTv.setBackground(new Color(255, 20, 147));
-		botonTv.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		botonTv.setHorizontalAlignment(SwingConstants.LEFT);
-		botonTv.setSelected(true);
-		botonTv.setBounds(251, 274, 137, 44);
-		add(botonTv);
 		
 		
 		JButton botonEntrar = new BotonAzul("Entrar");
 		botonEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
+				/*
 				if(botonTv.isSelected()==true) {
 					ventana.irAPantalla("juego");
 					MusicaFondo musica= new MusicaFondo(new File("./musica/musicaSeries/los simpson - esta yegua.wav"));
@@ -127,7 +94,7 @@ public class PantallaEleccionEstilo extends JPanel {
 					ventana.irAPantalla("juego");
 					MusicaFondo musica= new MusicaFondo(new File("./musica/dance"));
 					musica.start();
-				}
+				}*/
 				
 				ventana.irAPantalla("juego");
 				
@@ -140,17 +107,14 @@ public class PantallaEleccionEstilo extends JPanel {
 		
 		// Hago para que solo se pueda seleccionar uno
 		ButtonGroup grupoEstilos = new ButtonGroup();
-		grupoEstilos.add(botonTv);
-		grupoEstilos.add(botonRockPop);
-		grupoEstilos.add(botonDance);
 		
 		// Titulo de ventana
-		JLabel lblNewLabel = new JLabel("Selecciona el estilo");
-		lblNewLabel.setFont(new Font("Dubai Medium", Font.PLAIN, 40));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(278, 151, 342, 79);
-		add(lblNewLabel);
+		JLabel labelTitulo = new JLabel("");
+		labelTitulo.setFont(new Font("Dubai Medium", Font.PLAIN, 40));
+		labelTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		labelTitulo.setForeground(Color.WHITE);
+		labelTitulo.setBounds(278, 151, 342, 79);
+		add(labelTitulo);
 		
 		// Aqui le pongo de fondo una imagen a la ventana
 		JLabel labelFondo = new JLabel("");

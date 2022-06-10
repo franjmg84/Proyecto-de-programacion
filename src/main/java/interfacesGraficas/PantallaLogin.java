@@ -81,7 +81,7 @@ public class PantallaLogin extends JPanel {
 					}
 				
 						
-				ventana.irAPantalla("estilo");
+				ventana.irAPantalla("juego1");
 			
 			}
 		});
