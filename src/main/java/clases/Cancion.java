@@ -48,7 +48,7 @@ public class Cancion extends CosaConNombre{
 	            Clip sonido = AudioSystem.getClip();
 	            
 	            // Se carga con un fichero wav
-	            sonido.open(AudioSystem.getAudioInputStream(new File("Bon Jovi.wav")));
+	            sonido.open(AudioSystem.getAudioInputStream(new File("./musica")));
 	            
 	            // Comienza la reproducción
 	            sonido.start();
