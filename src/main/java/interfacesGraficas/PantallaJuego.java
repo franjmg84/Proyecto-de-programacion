@@ -23,8 +23,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
+import clases.Cancion;
+import clases.CancionConOpcion;
 
-public class PantallaJuego1 extends JPanel {
+
+public class PantallaJuego extends JPanel {
 	private Ventana ventana;
 	private Clip musica;
 	/**
@@ -32,10 +35,10 @@ public class PantallaJuego1 extends JPanel {
 	 * @param clip 
 	 * @param ventana 
 	 */
-	public PantallaJuego1(Ventana v, Clip clip) {
+	public PantallaJuego(Ventana v, CancionConOpcion c) {
 		this.ventana=v;
 		try {
-			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./musica/ACDC.wav"));
+			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File(c.getRuta()));
 			this.musica = AudioSystem.getClip();
 			musica.open(archivo);
 			
@@ -74,13 +77,13 @@ public class PantallaJuego1 extends JPanel {
 			}
 		});
 		
-		JButton botonRespuesta3 = new BotonAzul("Respuesta 3");
+		JButton botonRespuesta3 = new BotonAzul(c.getRespuestasPosibles().get(2));
 		botonRespuesta3.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		botonRespuesta3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				musica.stop();
-				ventana.irAPantalla("juego2");
+				ventana.irAPantalla("estilo");
 				
 			}
 		});
@@ -95,13 +98,13 @@ public class PantallaJuego1 extends JPanel {
 		botonSalir.setBounds(387, 517, 125, 48);
 		add(botonSalir);
 		
-		JButton botonRespuesta4 = new BotonAzul("Respuesta 4");
+		JButton botonRespuesta4 = new BotonAzul(c.getRespuestasPosibles().get(3));
 		botonRespuesta4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				musica.stop();
-				ventana.irAPantalla("juego2");
+				music.stop();
+				ventana.irAPantalla("estilo");
 			}
 		});
 		botonRespuesta4.setFont(new Font("Tahoma", Font.PLAIN, 23));
@@ -110,11 +113,11 @@ public class PantallaJuego1 extends JPanel {
 		botonRespuesta3.setBounds(207, 383, 216, 48);
 		add(botonRespuesta3);
 		
-		JButton botonRespuesta2 = new BotonAzul("Respuesta 2");
+		JButton botonRespuesta2 = new BotonAzul(c.getRespuestasPosibles().get(1));
 		botonRespuesta2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				musica.stop();
-				ventana.irAPantalla("juego2");
+				ventana.irAPantalla("estilo");
 				
 			}
 		});
@@ -122,19 +125,19 @@ public class PantallaJuego1 extends JPanel {
 		botonRespuesta2.setBounds(467, 285, 216, 48);
 		add(botonRespuesta2);
 		
-		JButton botonRespuesta1 = new BotonAzul("Respuesta 1");
+		JButton botonRespuesta1 = new BotonAzul(c.getRespuestasPosibles().get(0));
 		botonRespuesta1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				musica.stop();
 				
-				ventana.irAPantalla("juego2");
+				musica.stop();
+				ventana.irAPantalla("estilo");
 			}
 		});
 		botonRespuesta1.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		botonRespuesta1.setBounds(207, 285, 216, 48);
 		add(botonRespuesta1);
 		
-		BotonAzul botonStop = new BotonAzul("Stop");
+		BotonAzul botonStop = new BotonAzul("Atras");
 		botonStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				musica.stop();
@@ -142,17 +145,17 @@ public class PantallaJuego1 extends JPanel {
 		});
 		botonStop.setText("Stop");
 		botonStop.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		botonStop.setBounds(693, 53, 132, 48);
+		botonStop.setBounds(501, 184, 132, 48);
 		add(botonStop);
 		BotonConSonido.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		BotonConSonido.setBounds(57, 53, 132, 48);
+		BotonConSonido.setBounds(257, 184, 132, 48);
 		add(BotonConSonido);
 		
 		JLabel fondoJuego = new JLabel("");
-		fondoJuego.setIcon(new ImageIcon(PantallaJuego1.class.getResource("/imagenes/fondo con logo.png")));
+		fondoJuego.setIcon(new ImageIcon(PantallaJuego.class.getResource("/imagenes/fondo con logo.png")));
 		fondoJuego.setBounds(0, 0, 900, 700);
 		add(fondoJuego);
 		
-		
+	
 	}
 }

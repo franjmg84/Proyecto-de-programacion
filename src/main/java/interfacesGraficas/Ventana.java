@@ -116,7 +116,7 @@ public class Ventana extends JFrame {
 			this.pantallaActual=new PantallaJuego9(this);
 			break;
 		case "juego10":
-			this.pantallaActual=new PantallaJuego10(this);
+			this.pantallaActual=new PantallaJuego(this);
 			break;
 		default:
 			break;
