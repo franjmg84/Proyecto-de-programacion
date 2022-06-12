@@ -1,6 +1,6 @@
 package interfacesGraficas;
 
-import java.awt.BorderLayout;
+
 import java.awt.Cursor;
 import java.awt.EventQueue;
 import java.io.File;
@@ -112,7 +112,7 @@ public class Ventana extends JFrame {
 			this.pantallaActual= new PantallaRegistro(this);
 			break;
 		case "juego":
-			this.pantallaActual=new PantallaJuego(this);
+			this.pantallaActual=new PantallaJuego1(this);
 			break;
 		default:
 			break;

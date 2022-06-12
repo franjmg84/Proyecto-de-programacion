@@ -189,7 +189,7 @@ public class PantallaLogin extends JPanel {
 
 		JLabel fondoLogin = new JLabel("");
 		fondoLogin.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/fondo con logo.png")));
-		fondoLogin.setBounds(0, 0, 900, 701);
+		fondoLogin.setBounds(0, 0, 879, 702);
 		add(fondoLogin);
 
 		JLabel lblNewLabel_2 = new JLabel("");

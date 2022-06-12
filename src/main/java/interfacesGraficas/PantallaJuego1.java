@@ -1,7 +1,31 @@
 package interfacesGraficas;
 
-import java.awt.GridLayout;
-import java.awt.List;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+import componentesvisuales.BotonAzul;
+import enumeraciones.Idioma;
+import enumeraciones.Pais;
+import utils.ConexionBD;
+
+
+import javax.swing.SwingConstants;
+
+import clases.Artista;
+import clases.CancionConOpcion;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,54 +34,28 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
-import javax.swing.JTextField;
-
-import clases.Artista;
-import clases.CancionConOpcion;
-import componentesvisuales.BotonAzul;
-import enumeraciones.Idioma;
-import enumeraciones.Pais;
-import utils.ConexionBD;
-
-import javax.swing.JRadioButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Label;
-import java.awt.Button;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 
-public class PantallaJuego extends JPanel implements ActionListener {
+public class PantallaJuego1 extends JPanel implements ActionListener {
 	private JPanel panel;
 	private JTextField textField;
 	private JRadioButton rdbtnNewRadioButton;
 	
-	
-	
 	private JRadioButton rdbtnNewRadioButtonSeleccionado;
+	
 	
 	private ArrayList<CancionConOpcion> canciones = new ArrayList<>();
 	private JPanel panel_1;
-	private Label label_1;
-	private Label labelFallos;
-	private Label preguntasTotales;
-	private Label label_4;
-	private Label labelAciertos;
-	private Button buttonSiguiente, buttonPlay, buttonStop;
-	private JPanel panelJugada;
+	private JLabel label_1;
+	private JLabel labelFallos;
+	private JLabel preguntasTotales;
+	private JLabel label_4;
+	private JLabel labelAciertos;
+	private JButton buttonSiguiente, buttonPlay, buttonStop;
+	private JPanel panelJuego;
 	
 	private JRadioButton radio1,radio2,radio3,radio4;
 	private ButtonGroup grupoDeRadios;
@@ -69,97 +67,113 @@ public class PantallaJuego extends JPanel implements ActionListener {
 	int fallos = 0;
 	private CancionConOpcion cancionActual;
 	private JButton buttonSiguiente2;
-
-	/**
-	 * Create the panel.
-	 */
-	public PantallaJuego(Ventana v) {
-		initComponents();
-	}
-	private void initComponents() {
+	
+	public PantallaJuego1(Ventana v) {
 		cargarCanciones();
+	//}
+	//private void initComponents() {
+		//cargarCanciones();
+		
 		
 		setLayout(null);
 		
-		panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 900, 701);
-		add(panel_1);
-		panel_1.setLayout(null);
-		
-		label_1 = new Label("Fallos");
-		label_1.setBounds(10, 38, 68, 22);
-		panel_1.add(label_1);
-		
-		labelFallos = new Label("hola");
-		labelFallos.setBounds(84, 38, 62, 22);
-		panel_1.add(labelFallos);
-		
-		preguntasTotales = new Label("New label");
-		preguntasTotales.setAlignment(Label.CENTER);
-		preguntasTotales.setBounds(152, 38, 206, 22);
-		panel_1.add(preguntasTotales);
-		preguntasTotal = canciones.size();
-		preguntaActual++;
-		preguntasTotales.setText(""+preguntaActual+"/"+preguntasTotal);
-		
-		label_4 = new Label("ACIERTOS");
-		label_4.setBounds(364, 38, 86, 22);
-		panel_1.add(label_4);
-		
-		labelAciertos = new Label("New label");
-		labelAciertos.setBounds(456, 38, 62, 22);
-		panel_1.add(labelAciertos);
-		
-		
-		
-		
-		buttonSiguiente2 = new BotonAzul("SIGUIENTE");
-		panel_1.add(buttonSiguiente2);
-		System.out.println("PREGUNTA ACTUAL "+preguntaActual);
-		buttonSiguiente2.setBounds(341, 624, 174, 45);
-		
-		buttonSiguiente2.addActionListener(this);
-		
-		panel_1.add(buttonSiguiente2);
-		
-		buttonPlay = new Button("PLAY");
-		buttonPlay.addActionListener(this);
-		buttonPlay.setBounds(0, 60, 150, 45);
-		panel_1.add(buttonPlay);
-		
-		
-		buttonStop = new Button("STOP");
-		buttonStop.addActionListener(this);
-		buttonStop.setBounds(100, 60, 150, 45);
-		panel_1.add(buttonStop);
-		
-		panelJugada = new JPanel();
-		panelJugada.setBounds(10, 300, 900, 300);
-		panel_1.add(panelJugada);
-		panelJugada.setLayout(new GridLayout(1, 0, 0, 0));
-		
-		
-		
-		buttonPlay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cancionActual.getClipCancion().start();
-			}
-		});	
-		
+		buttonStop = new JButton("Stop");
 		buttonStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cancionActual.getClipCancion().stop();
 			}
-		});	
+		});
+		buttonStop.setFont(new Font("Dubai Medium", Font.ITALIC, 50));
+		buttonStop.setBounds(499, 236, 168, 61);
+		add(buttonStop);
+		
+	    buttonPlay = new JButton("Play");
+		buttonPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cancionActual.getClipCancion().start();
+			}
+		});
+		buttonPlay.setFont(new Font("Dubai Medium", Font.ITALIC, 50));
+		buttonPlay.setBounds(218, 236, 168, 61);
+		add(buttonPlay);
+		
+		label_1 = new JLabel("1");
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
+		label_1.setBounds(798, 37, 45, 45);
+		add(label_1);
+		
+		labelAciertos = new JLabel("ACIERTOS");
+		labelAciertos.setForeground(Color.WHITE);
+		labelAciertos.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
+		labelAciertos.setBounds(588, 37, 200, 45);
+		add(labelAciertos);
+		
+		preguntasTotales = new JLabel("1/0");
+		preguntasTotales.setHorizontalAlignment(SwingConstants.CENTER);
+		preguntasTotales.setForeground(Color.WHITE);
+		preguntasTotales.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
+		preguntasTotales.setBounds(382, 89, 106, 45);
+		add(preguntasTotales);
+		preguntasTotal = canciones.size();
+		preguntaActual++;
+		preguntasTotales.setText(""+preguntaActual+"/"+preguntasTotal);
+		
+		labelFallos = new JLabel("0");
+		labelFallos.setForeground(Color.WHITE);
+		labelFallos.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
+		labelFallos.setBounds(191, 29, 67, 61);
+		add(labelFallos);
+		
+		JLabel label_1 = new JLabel("Fallos");
+		label_1.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
+		label_1.setForeground(Color.WHITE);
+		label_1.setBounds(63, 29, 129, 61);
+		add(label_1);
+		
+		buttonSiguiente = new BotonAzul("SIGUIENTE");
+		buttonSiguiente.setBounds(358, 595, 174, 45);
+		add(buttonSiguiente);
+		
+		panelJuego = new JPanel();
+		panelJuego.setBackground(Color.DARK_GRAY);
+		panelJuego.setBounds(0, 424, 900, 156);
+		panelJuego.setOpaque(false);
+		add(panelJuego);
+		panelJuego.setLayout(new GridLayout(0, 3, 0, 0));
+	
+		
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(PantallaJuego1.class.getResource("/imagenes/fondo con logo.png")));
+		lblNewLabel.setBounds(0, 0, 900, 700);
+		add(lblNewLabel);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		//AQUI LIMPIAMOS EL JPANEL DE LA JUGADA
-		panelJugada.removeAll();
-		panelJugada.repaint();
+		panelJuego.removeAll();
+		panelJuego.repaint();
 		
 		//AQUI PONEMOS EL TEXTO DE LOS CIERTOS Y FALLOS
 		labelAciertos.setText(""+aciertos);
 		labelFallos.setText(""+fallos);
-	
+		System.out.println("PREGUNTA ACTUAL "+preguntaActual);
 		
 		//AQUI CARGAMOS EL PANEL
 		cargarPnael(preguntaActual-1);
@@ -178,7 +192,7 @@ public class PantallaJuego extends JPanel implements ActionListener {
 				labelFallos.setText(""+fallos);
 			}
 		}else {
-			buttonSiguiente2.addActionListener(new ActionListener() {
+			buttonSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cancionActual.getClipCancion().stop();
 				if(aciertos>=canciones.size()) {
@@ -258,8 +272,8 @@ public class PantallaJuego extends JPanel implements ActionListener {
 	
 	private void cargarPnael(int posicion) {
 		//QUITAMOS EL CONTENIDO DEL PANEL
-		panelJugada.removeAll();
-		panelJugada.repaint();
+		panelJuego.removeAll();
+		panelJuego.repaint();
 		
 		//ESTA VARIABLE INDICA EL RADIOBUTTON QUE HEMOS SELECCIONADO
 		rdbtnNewRadioButtonSeleccionado = null;
@@ -281,10 +295,41 @@ public class PantallaJuego extends JPanel implements ActionListener {
 		
 		//CREAMOS LOS RADIO BUTTON
 		grupoDeRadios=new ButtonGroup();
+		
+		
+		radio1 = new JRadioButton();
+		radio1.setText(respuestasCorrectas.get(0));
+		radio1.setHorizontalAlignment(SwingConstants.LEFT);
+		radio1.setForeground(Color.WHITE);
+		radio1.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
+		radio1.setBackground(Color.DARK_GRAY);
+		radio1.setOpaque(false);
+		
+		radio2 = new JRadioButton();
+		radio2.setText(respuestasCorrectas.get(2));
+		radio2.setForeground(Color.WHITE);
+		radio2.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
+		radio2.setBackground(Color.DARK_GRAY);
+		radio2.setOpaque(false);
+		
+		radio3 = new JRadioButton();
+		radio3.setText(respuestasCorrectas.get(1));
+		radio3.setForeground(Color.WHITE);
+		radio3.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
+		radio3.setBackground(Color.DARK_GRAY);
+		radio3.setOpaque(false);
+		
+		radio4 = new JRadioButton();
+		radio4.setText(respuestasCorrectas.get(3));
+		radio4.setForeground(Color.WHITE);
+		radio4.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
+		radio4.setBackground(Color.DARK_GRAY);
+		radio4.setOpaque(false);
+		
 		  
-		  radio1=new JRadioButton();
-		  radio1.setText(respuestasCorrectas.get(0));
-		  radio1.setBounds(20, 30, 200, 30);
+		  /*radio6=new JRadioButton();
+		  radio6.setText(respuestasCorrectas.get(0));
+		  radio6.setBounds(20, 30, 200, 30);
 		  
 		  radio3=new JRadioButton();
 		  radio3.setText(respuestasCorrectas.get(2));
@@ -299,17 +344,17 @@ public class PantallaJuego extends JPanel implements ActionListener {
 		  
 		  radio4=new JRadioButton();
 		  radio4.setText(respuestasCorrectas.get(3));
-		  radio4.setBounds(20, 120, 200, 30);
+		  radio4.setBounds(20, 120, 200, 30);*/
 		  
 		  grupoDeRadios.add(radio1);
 		  grupoDeRadios.add(radio2);
 		  grupoDeRadios.add(radio3);
 		  grupoDeRadios.add(radio4);
 		  
-		  panelJugada.add(radio1);
-		  panelJugada.add(radio2);
-		  panelJugada.add(radio3);
-		  panelJugada.add(radio4);
+		  panelJuego.add(radio1);
+		  panelJuego.add(radio2);
+		  panelJuego.add(radio3);
+		  panelJuego.add(radio4);
 		  
 		  
 		  //CREAMOS EL LISTENER DE LOS RADIOBUTTONS
@@ -325,7 +370,7 @@ public class PantallaJuego extends JPanel implements ActionListener {
 	private void cargarCanciones() {
 		
 		//VARIABLE QUE INDICA LA RUTA DE LA CANCION
-		String ruta = "\\musica";
+		String ruta = "D:/CENEC/PROGRAMACION/3ER TRIMESTRE/Proyecto de programacion CC/Proyecto-de-programacion/musica/";
 		//VARIABLE QUE INDICA EL FORMATO DE LA CANCION
 		String formato = ".wav";
 		//SE GUARDAN LAS CANCIONES
@@ -399,6 +444,8 @@ public class PantallaJuego extends JPanel implements ActionListener {
 				e.printStackTrace();
 			}
 			
+		}else {
+			System.out.println("NO EXISTE WEI");
 		}
 		
 		//CREAMOS UNA CACNCION CON OPCION
@@ -841,4 +888,5 @@ public class PantallaJuego extends JPanel implements ActionListener {
 			rdbtnNewRadioButtonSeleccionado = radio4;
 		}
 	}
+
 }
