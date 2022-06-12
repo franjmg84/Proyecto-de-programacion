@@ -6,8 +6,9 @@ import javax.sound.sampled.Clip;
 
 public class CancionConOpcion extends Cancion{
 	
-	private byte respuestaCorrecta;
+	private String respuestaCorrecta;
 	ArrayList<String>respuestasPosibles;
+	private Clip clip;
 	/**
 	 * @param nombre
 	 * @param artista
@@ -16,24 +17,25 @@ public class CancionConOpcion extends Cancion{
 	 * @param respuestaCorrecta
 	 * @param respuestasPosibles
 	 */
-	public CancionConOpcion(String nombre, Artista artista, float duracion, Clip audio, byte respuestaCorrecta,
+	public CancionConOpcion(String nombre, Artista artista, float duracion, Clip audio, String  respuestaCorrecta,
 			ArrayList<String> respuestasPosibles) {
 		super(nombre, artista, duracion, audio);
 		this.respuestaCorrecta = respuestaCorrecta;
 		this.respuestasPosibles = respuestasPosibles;
+		this.clip = audio;
 	}
 	/**
 	 *Metodo get para la variable respuestaCorrecta
 	 * @return devuelve el valor de respuestaCorrecta
 	 */
-	public byte getRespuestaCorrecta() {
+	public String getRespuestaCorrecta() {
 		return respuestaCorrecta;
 	}
 	/**
 	 *Metodo set pata la variable respuestaCorrecta
 	 * @param respuestaCorrecta el nuevo valor de  respuestaCorrecta
 	 */
-	public void setRespuestaCorrecta(byte respuestaCorrecta) {
+	public void setRespuestaCorrecta(String respuestaCorrecta) {
 		this.respuestaCorrecta = respuestaCorrecta;
 	}
 	/**
@@ -56,5 +58,10 @@ public class CancionConOpcion extends Cancion{
 				+ "]";
 	}
 	
+	public Clip getClipCancion() {
+		return this.clip;
+	}
+	
 	
 }
+

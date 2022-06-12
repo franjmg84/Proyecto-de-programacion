@@ -19,6 +19,8 @@ import hilos.MusicaFondo;
 import utils.ConexionBD;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -37,52 +39,48 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 
 public class PantallaLogin extends JPanel {
-
+	
+	
 	private Ventana ventana;
 	private JTextField campoEmail;
-	private JPasswordField campoContraseña;
-
-
+	private JPasswordField campoContrasena;
+	
+	public static String emailJugador="";
+	
+	/**
+	 * Create the panel.
+	 */
 	public PantallaLogin(Ventana v,Clip a) {
 		this.ventana = v;
 		setLayout(null);
-
+		ventana.clip.start();
 		JButton botonLogin = new BotonAzul("Login");
 		botonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String email = campoEmail.getText();
-				String contraseña = new String(campoContraseña.getPassword());
-				System.out.println(email+contraseña);
+				String contrasena = new String(campoContrasena.getPassword());
+				System.out.println(email+contrasena);
 				  java.sql.Statement smt = ConexionBD.conectar();
-			        
-			       
-
 			        try { 
 			        	System.out.println("Dentro del try");
-			        	ResultSet consulta = smt.executeQuery("select * from usuario where email='"+email+"'");
+			        	ResultSet consulta = smt.executeQuery("select * from usuario where email='"+email+"' AND pass = '"+contrasena+"'");
 						if(consulta.next()){
-						  System.out.println("primer if");
-						  System.out.println(consulta.getString("pass"));
-						  System.out.println(contraseña);
-						    if(contraseña.equals(consulta.getString("pass")) ){
-						    	System.out.println("Segundo if");
+						    if(contrasena.equals(consulta.getString("pass")) ){
 						    	 ConexionBD.desconectar();
-						    	ventana.irAPantalla("estilo");
+						    	 System.out.println("EXISTE USUARIO");
+						    	 emailJugador=email;
+						    	ventana.irAPantalla("juego");
 						    }
-						   
-						   
 						}else {System.out.println("Soy el else");
 						    ConexionBD.desconectar();
-						    //throw new UsuarioNoExisteException("No existe el mail en la BD");
+						    throw new UsuarioNoExisteException("No existe el mail en la BD");
 						}
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UsuarioNoExisteException e1) {
+						JOptionPane.showMessageDialog(null, "EL USUARIO NO EXISTE NE LA BASE DE DATOS", "USUARIO ERRONEO", JOptionPane.ERROR_MESSAGE);
 						e1.printStackTrace();
 					}
-				
-						
-				ventana.irAPantalla("juego1");
-			
 			}
 		});
 		
@@ -130,7 +128,6 @@ public class PantallaLogin extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ventana.irAPantalla("registro");
-
 			}
 		});
 		botonRegistro.setToolTipText("Pincha aqui para registrarte");
@@ -185,10 +182,10 @@ public class PantallaLogin extends JPanel {
 		
 		
 		
-		campoContraseña = new JPasswordField();
-		campoContraseña.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		campoContraseña.setBounds(257, 347, 383, 27);
-		add(campoContraseña);
+		campoContrasena = new JPasswordField();
+		campoContrasena.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		campoContrasena.setBounds(257, 347, 383, 27);
+		add(campoContrasena);
 
 		JLabel fondoLogin = new JLabel("");
 		fondoLogin.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/fondo con logo.png")));
@@ -199,6 +196,6 @@ public class PantallaLogin extends JPanel {
 		lblNewLabel_2.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/fondo login.png")));
 		lblNewLabel_2.setBounds(0, 0, 900, 701);
 		add(lblNewLabel_2);
-
 	}
+
 }

@@ -42,8 +42,9 @@ public class Usuario extends Persona {
 			throw new PassInvalidException("La contraseña debe tener al menos 3 caracteres.");
 		}
 		Statement smt = ConexionBD.conectar();
-		if (smt.executeUpdate("insert into usuario values('" + email + "','" + pass + "','" + nombre + "','" + pais
-				+ "','" + idioma +"', '"+0+"')") > 0) {
+		String s = "INSERT INTO `usuario` (`nombre`, `genero`, `pais`, `idioma`, `pass`, `email`, `Partida_nombre_usuario`) VALUES ('"+nombre+"', '', '"+pais+"', '"+idioma+"', '"+pass+"', '"+email+"', '"+nombre+"');";
+		System.out.println("SQL INSERT -> "+s);
+		if (smt.executeUpdate(s) > 0) {
 			this.email = email;
 			this.pass = pass;
 

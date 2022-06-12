@@ -1,48 +1,70 @@
 package interfacesGraficas;
 
-import javax.swing.JPanel;
-
-import clases.Cancion;
-import clases.CancionJugada;
-import clases.Usuario;
-import hilos.MusicaFondo;
-
+import java.awt.BorderLayout;
 import java.awt.Cursor;
-import java.awt.FlowLayout;
+import java.awt.EventQueue;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import clases.Cancion;
+import clases.CancionJugada;
+import clases.Usuario;
+
+
 
 public class Ventana extends JFrame {
-	
-	
+
+	private JPanel contentPane;
 	protected Usuario usuarioLogeado;
 	private JPanel pantallaActual;
 	protected ArrayList<Cancion> cancionesPorJugar;
 	protected ArrayList<CancionJugada> cancionesJugadas;
 	protected Clip clip;
+
 	/**
-	 * Create the panel.
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Ventana frame = new Ventana();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
 	 */
 	public Ventana() {
 		this.cancionesPorJugar= new ArrayList<Cancion>();
 		this.cancionesJugadas=new ArrayList<CancionJugada>();
 		
 		try {
-			AudioInputStream archivo = AudioSystem.getAudioInputStream(new File("./popRock/Bon Jovi.wav"));
-			this.clip = AudioSystem.getClip();
-			clip.open(archivo);
+			File musica = new File("./musica/ACDC.wav");
+			
+			if(musica.exists()){
+				System.out.println("Existe---"+musica.exists());
+				AudioInputStream archivo = AudioSystem.getAudioInputStream(musica);
+				this.clip = AudioSystem.getClip();
+				clip.open(archivo);
+				
+			}
 			
 		} catch (LineUnavailableException e) {
 			// TODO Auto-generated catch block
@@ -67,9 +89,13 @@ public class Ventana extends JFrame {
 		this.setContentPane(this.pantallaActual);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-	
+		
+		
+		
 		
 	}
+	
+	
 	public void irAPantalla(String nombrePantalla) {
 		/*Iterator it=this.pantallas.values().iterator();
 		while(it.hasNext()) {
@@ -83,10 +109,7 @@ public class Ventana extends JFrame {
 			this.pantallaActual=new PantallaLogin(this,clip);
 			break;
 		case "registro":
-			this.pantallaActual=new PantallaRegistro(this.clip);
-			break;
-		case "estilo":
-			this.pantallaActual=new PantallaEleccionEstilo(this,clip);
+			this.pantallaActual= new PantallaRegistro(this);
 			break;
 		case "juego":
 			this.pantallaActual=new PantallaJuego(this);
@@ -101,5 +124,5 @@ public class Ventana extends JFrame {
 		//this.setContentPane(this.pantallas.get(nombrePantalla));
 	
 	}
-	
+
 }

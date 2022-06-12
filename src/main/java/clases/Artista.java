@@ -22,4 +22,7 @@ public class Artista extends Persona {
 	
 	}
 	
+	public Artista(){
+	}
+	
 }

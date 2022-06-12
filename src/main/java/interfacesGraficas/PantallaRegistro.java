@@ -1,8 +1,8 @@
 package interfacesGraficas;
 
 import java.awt.Color;
-
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -21,13 +21,15 @@ import javax.swing.SwingConstants;
 
 import clases.Usuario;
 import componentesvisuales.BotonAzul;
-import enumeraciones.Pais;
 import enumeraciones.Idioma;
+import enumeraciones.Pais;
+
+
 
 public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
 	private Ventana ventana;
-	private JPasswordField campoContraseña;
+	private JPasswordField campoContrasena;
 	private JTextField campoEmail;
 	/**
 	 * Create the panel.
@@ -67,9 +69,9 @@ public class PantallaRegistro extends JPanel {
 		labelEmail.setBounds(399, 239, 88, 48);
 		add(labelEmail);
 		
-		campoContraseña = new JPasswordField();
-		campoContraseña.setBounds(254, 368, 382, 28);
-		add(campoContraseña);
+		campoContrasena = new JPasswordField();
+		campoContrasena.setBounds(254, 368, 382, 28);
+		add(campoContrasena);
 		
 		JLabel labelPais = new JLabel("Pais");
 		labelPais.setForeground(Color.LIGHT_GRAY);
@@ -121,12 +123,12 @@ public class PantallaRegistro extends JPanel {
 			}
 		});
 		
-		JLabel labelContraseña = new JLabel("Contrase\u00F1a");
-		labelContraseña.setForeground(Color.LIGHT_GRAY);
-		labelContraseña.setBounds(387, 323, 119, 35);
-		labelContraseña.setHorizontalAlignment(SwingConstants.CENTER);
-		labelContraseña.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
-		add(labelContraseña);
+		JLabel labelContrasena = new JLabel("Contrase\u00F1a");
+		labelContrasena.setForeground(Color.LIGHT_GRAY);
+		labelContrasena.setBounds(387, 323, 119, 35);
+		labelContrasena.setHorizontalAlignment(SwingConstants.CENTER);
+		labelContrasena.setFont(new Font("Dubai Medium", Font.ITALIC, 20));
+		add(labelContrasena);
 		
 		JButton botonRegistrarse = new BotonAzul("Registrarse");
 		botonRegistrarse.setBounds(362, 518, 169, 48);
@@ -153,14 +155,17 @@ public class PantallaRegistro extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String nombreUsuario=campoUsuario.getText();
-				String contraseña=new String(campoContraseña.getPassword());
+				String contrasena=new String(campoContrasena.getPassword());
 				String email=campoEmail.getText();
 				
 				Pais pais= (Pais)seleccionPais.getSelectedItem();
 				Idioma idioma= (Idioma)seleccionIdioma.getSelectedItem();
 				try {//String email, String nombre, Pais pais, Idioma idioma, String pass
-					new Usuario(email, nombreUsuario, pais, idioma, contraseña);
-					JOptionPane.showMessageDialog(ventana,"Registrado con éxito",
+					new Usuario(email, nombreUsuario, pais, idioma, contrasena);
+					
+					
+					
+					JOptionPane.showMessageDialog(ventana,"Registrado con Exito",
 							"Registro Completado",JOptionPane.PLAIN_MESSAGE);
 					ventana.irAPantalla("login");
 				} catch (Exception e1) {
@@ -171,3 +176,4 @@ public class PantallaRegistro extends JPanel {
 		});
 	}
 }
+

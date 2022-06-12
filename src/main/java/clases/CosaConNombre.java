@@ -29,7 +29,7 @@ public abstract class  CosaConNombre {
 	 * @throws NombreInvalidoException 
 	 */
 	public void setNombre(String nombre) throws NombreInvalidoException {
-		if(nombre.isBlank()) {
+		if(nombre.isEmpty()) {
 			throw new NombreInvalidoException("El nombre no puede estar vacio");
 		}else {
 		this.nombre = nombre;
