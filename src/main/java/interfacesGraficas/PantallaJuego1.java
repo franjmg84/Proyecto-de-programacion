@@ -70,10 +70,7 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 	
 	public PantallaJuego1(Ventana v) {
 		cargarCanciones();
-	//}
-	//private void initComponents() {
-		//cargarCanciones();
-		
+
 		
 		setLayout(null);
 		
@@ -310,24 +307,6 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		radio4.setOpaque(false);
 		
 		  
-		  /*radio6=new JRadioButton();
-		  radio6.setText(respuestasCorrectas.get(0));
-		  radio6.setBounds(20, 30, 200, 30);
-		  
-		  radio3=new JRadioButton();
-		  radio3.setText(respuestasCorrectas.get(2));
-		  radio3.setBounds(20, 90, 200, 30);
-		  
-		  
-		  
-		  radio2=new JRadioButton();
-		  radio2.setText(respuestasCorrectas.get(1));
-		  radio2.setBounds(20, 60, 200, 30);
-		  
-		  
-		  radio4=new JRadioButton();
-		  radio4.setText(respuestasCorrectas.get(3));
-		  radio4.setBounds(20, 120, 200, 30);*/
 		  
 		  grupoDeRadios.add(radio1);
 		  grupoDeRadios.add(radio2);
@@ -395,9 +374,9 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
 		//AGREAMOS LAS POSIBLES RESPUESTAS INCLUYENDO LA QUE DEBERIA SER LA BUENA
-		respuestasPosibles.add("Respuesta 1 ACDC");
-		respuestasPosibles.add("Respuesta 2 ACDC");
-		respuestasPosibles.add("Respuesta 3 ACDC");
+		respuestasPosibles.add("Respuesta 1 R.E.M.");
+		respuestasPosibles.add("Respuesta 2 The Police");
+		respuestasPosibles.add("Respuesta 3 U2");
 		respuestasPosibles.add("ACDC");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -446,9 +425,9 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		String respuestaCorrecta = "BonJovi";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
-		respuestasPosibles.add("Respuesta 1 BonJovi");
-		respuestasPosibles.add("Respuesta 2 BonJovi");
-		respuestasPosibles.add("Respuesta 3 BonJovi");
+		respuestasPosibles.add("Respuesta 1 Metallica");
+		respuestasPosibles.add("Respuesta 2 Pearl Jam");
+		respuestasPosibles.add("Respuesta 3 The Band");
 		respuestasPosibles.add("BonJovi");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -491,9 +470,9 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		String respuestaCorrecta = "los_simpson";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
-		respuestasPosibles.add("Respuesta 1 los_simpson");
-		respuestasPosibles.add("Respuesta 2 los_simpson");
-		respuestasPosibles.add("Respuesta 3 los_simpson");
+		respuestasPosibles.add("Respuesta 1 Futurama");
+		respuestasPosibles.add("Respuesta 2 South Park");
+		respuestasPosibles.add("Respuesta 3 Big Mouth");
 		respuestasPosibles.add("los_simpson");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -534,12 +513,12 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		
 		Clip clip = null; 
 		File musica = new File(cancion);
-		String respuestaCorrecta = "Lil_Nas_X_THATS_WHAT_I_WANT";
+		String respuestaCorrecta = "Lil_Nas";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
-		respuestasPosibles.add("Respuesta 1 Lil_Nas_X_THATS_WHAT_I_WANT");
-		respuestasPosibles.add("Respuesta 2 Lil_Nas_X_THATS_WHAT_I_WANT");
-		respuestasPosibles.add("Respuesta 3 Lil_Nas_X_THATS_WHAT_I_WANT");
+		respuestasPosibles.add("Respuesta 1 Arcade Fire");
+		respuestasPosibles.add("Respuesta 2 CSN&Y");
+		respuestasPosibles.add("Respuesta 3 The Cure");
 		respuestasPosibles.add("Lil_Nas_X_THATS_WHAT_I_WANT");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -580,12 +559,12 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		
 		Clip clip = null; 
 		File musica = new File(cancion);
-		String respuestaCorrecta = "Queen_We_Are_The_Champions";
+		String respuestaCorrecta = "Queen";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
-		respuestasPosibles.add("Respuesta 1 Queen_We_Are_The_Champions");
-		respuestasPosibles.add("Respuesta 2 Queen_We_Are_The_Champions");
-		respuestasPosibles.add("Respuesta 3 Queen_We_Are_The_Champions");
+		respuestasPosibles.add("Respuesta 1 Dire Straits");
+		respuestasPosibles.add("Respuesta 2 Sonic Youth");
+		respuestasPosibles.add("Respuesta 3 Public Enemy");
 		respuestasPosibles.add("Queen_We_Are_The_Champions");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -625,12 +604,12 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		
 		Clip clip = null; 
 		File musica = new File(cancion);
-		String respuestaCorrecta = "Queen_We_Will_Rock_You";
+		String respuestaCorrecta = "Queen";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
-		respuestasPosibles.add("Respuesta 1 Queen_We_Will_Rock_You");
-		respuestasPosibles.add("Respuesta 2 Queen_We_Will_Rock_You");
-		respuestasPosibles.add("Respuesta 3 Queen_We_Will_Rock_You");
+		respuestasPosibles.add("Respuesta 1 Genesis");
+		respuestasPosibles.add("Respuesta 2 Depeche Mode");
+		respuestasPosibles.add("Respuesta 3 Red Hot Chili Peppers");
 		respuestasPosibles.add("Queen_We_Will_Rock_You");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -670,7 +649,7 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		
 		Clip clip = null; 
 		File musica = new File(cancion);
-		String respuestaCorrecta = "Smash-Mouth-I-m-A-Believer";
+		String respuestaCorrecta = "Smash-Mouth";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
 		respuestasPosibles.add("Respuesta 1 Smash-Mouth-I-m-A-Believer");
@@ -718,9 +697,9 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		String respuestaCorrecta = "The_Black_Eyed Peas_Pump_It";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
-		respuestasPosibles.add("Respuesta 1 The_Black_Eyed Peas_Pump_It");
-		respuestasPosibles.add("Respuesta 2 The_Black_Eyed Peas_Pump_It");
-		respuestasPosibles.add("Respuesta 3 The_Black_Eyed Peas_Pump_It");
+		respuestasPosibles.add("Respuesta 1 Radiohead");
+		respuestasPosibles.add("Respuesta 2 The Smiths");
+		respuestasPosibles.add("Respuesta 3 The Kinkst");
 		respuestasPosibles.add("The_Black_Eyed Peas_Pump_It");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -761,12 +740,12 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		
 		Clip clip = null; 
 		File musica = new File(cancion);
-		String respuestaCorrecta = "Zzoilo_&_Aitana_Mon_Amour";
+		String respuestaCorrecta = "Zzoilo_&_Aitana";
 		ArrayList<String> respuestasPosibles = new ArrayList<>();
 		
-		respuestasPosibles.add("Respuesta 1 Zzoilo_&_Aitana_Mon_Amour");
-		respuestasPosibles.add("Respuesta 2 Zzoilo_&_Aitana_Mon_Amour");
-		respuestasPosibles.add("Respuesta 3 Zzoilo_&_Aitana_Mon_Amour");
+		respuestasPosibles.add("Respuesta 1 Karol G");
+		respuestasPosibles.add("Respuesta 2 Natti Natasha");
+		respuestasPosibles.add("Respuesta 3 Mara Prada");
 		respuestasPosibles.add("Zzoilo_&_Aitana_Mon_Amour");
 		
 		Collections.shuffle(respuestasPosibles);
@@ -846,7 +825,7 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		
 		return c;
 	}
-	
+
 	
 	//listener de los JRADIOBUTTON
 	public void actionPerformed(ActionEvent e) {
