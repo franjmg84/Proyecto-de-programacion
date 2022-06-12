@@ -49,7 +49,7 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 	
 	private ArrayList<CancionConOpcion> canciones = new ArrayList<>();
 	private JPanel panel_1;
-	private JLabel label_1;
+	private JLabel lblAciertos;
 	private JLabel labelFallos;
 	private JLabel preguntasTotales;
 	private JLabel label_4;
@@ -80,6 +80,17 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 				cancionActual.getClipCancion().stop();
 			}
 		});
+		
+		BotonAzul btnzlSalir = new BotonAzul("SIGUIENTE");
+		btnzlSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnzlSalir.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 25));
+		btnzlSalir.setText("Salir");
+		btnzlSalir.setBounds(748, 595, 88, 45);
+		add(btnzlSalir);
 		buttonStop.setFont(new Font("Dubai Medium", Font.ITALIC, 50));
 		buttonStop.setBounds(499, 236, 168, 61);
 		add(buttonStop);
@@ -94,16 +105,16 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		buttonPlay.setBounds(218, 236, 168, 61);
 		add(buttonPlay);
 		
-		label_1 = new JLabel("1");
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
-		label_1.setBounds(798, 37, 45, 45);
-		add(label_1);
+		lblAciertos = new JLabel("Aciertos");
+		lblAciertos.setForeground(Color.WHITE);
+		lblAciertos.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
+		lblAciertos.setBounds(616, 37, 155, 45);
+		add(lblAciertos);
 		
 		labelAciertos = new JLabel("ACIERTOS");
 		labelAciertos.setForeground(Color.WHITE);
 		labelAciertos.setFont(new Font("Dubai Medium", Font.ITALIC, 40));
-		labelAciertos.setBounds(588, 37, 200, 45);
+		labelAciertos.setBounds(795, 37, 67, 45);
 		add(labelAciertos);
 		
 		preguntasTotales = new JLabel("1/0");
@@ -128,7 +139,8 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		label_1.setBounds(63, 29, 129, 61);
 		add(label_1);
 		
-		buttonSiguiente = new BotonAzul("SIGUIENTE");
+		BotonAzul buttonSiguiente = new BotonAzul("SIGUIENTE");
+		buttonSiguiente.setFont(new Font("Dubai Medium", Font.BOLD | Font.ITALIC, 25));
 		buttonSiguiente.setBounds(358, 595, 174, 45);
 		add(buttonSiguiente);
 		
@@ -283,47 +295,51 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		radio1.setForeground(Color.WHITE);
 		radio1.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
 		radio1.setBackground(Color.DARK_GRAY);
-		radio1.setOpaque(false);
+		//radio1.setOpaque(false);
 		
 		radio2 = new JRadioButton();
 		radio2.setText(respuestasCorrectas.get(2));
 		radio2.setForeground(Color.WHITE);
 		radio2.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
 		radio2.setBackground(Color.DARK_GRAY);
-		radio2.setOpaque(false);
+		//radio2.setOpaque(false);
 		
 		radio3 = new JRadioButton();
 		radio3.setText(respuestasCorrectas.get(1));
 		radio3.setForeground(Color.WHITE);
 		radio3.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
 		radio3.setBackground(Color.DARK_GRAY);
-		radio3.setOpaque(false);
-		
-		radio4 = new JRadioButton();
-		radio4.setText(respuestasCorrectas.get(3));
-		radio4.setForeground(Color.WHITE);
-		radio4.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
-		radio4.setBackground(Color.DARK_GRAY);
-		radio4.setOpaque(false);
+		//radio4.setOpaque(false);
 		
 		  
 		  
 		  grupoDeRadios.add(radio1);
 		  grupoDeRadios.add(radio2);
 		  grupoDeRadios.add(radio3);
-		  grupoDeRadios.add(radio4);
 		  
 		  panelJuego.add(radio1);
 		  panelJuego.add(radio2);
 		  panelJuego.add(radio3);
+		  
+		  JLabel lblNewLabel_1 = new JLabel("");
+		  lblNewLabel_1.setBackground(Color.DARK_GRAY);
+		  panelJuego.add(lblNewLabel_1);
+		  //radio3.setOpaque(false);
+		  
+		  radio4 = new JRadioButton();
+		  radio4.setText(respuestasCorrectas.get(3));
+		  radio4.setForeground(Color.WHITE);
+		  radio4.setFont(new Font("Dubai Medium", Font.ITALIC, 25));
+		  radio4.setBackground(Color.DARK_GRAY);
+		  grupoDeRadios.add(radio4);
 		  panelJuego.add(radio4);
+		  radio4.addActionListener(this);
 		  
 		  
 		  //CREAMOS EL LISTENER DE LOS RADIOBUTTONS
 		  radio1.addActionListener(this);
 		  radio2.addActionListener(this);
 		  radio3.addActionListener(this);
-		  radio4.addActionListener(this);
 		  
 	}
 	
@@ -850,6 +866,4 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 			rdbtnNewRadioButtonSeleccionado = radio4;
 		}
 	}
-	
-
 }
