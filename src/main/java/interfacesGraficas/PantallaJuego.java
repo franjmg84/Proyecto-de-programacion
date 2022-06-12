@@ -329,7 +329,7 @@ public class PantallaJuego extends JPanel implements ActionListener {
 	private void cargarCanciones() {
 		
 		//VARIABLE QUE INDICA LA RUTA DE LA CANCION
-		String ruta = "C:/Users/fernando/Documents/PROYECTOS_JAVA/proyecto-final/musica/";
+		String ruta = "./musica/";
 		//VARIABLE QUE INDICA EL FORMATO DE LA CANCION
 		String formato = ".wav";
 		//SE GUARDAN LAS CANCIONES
