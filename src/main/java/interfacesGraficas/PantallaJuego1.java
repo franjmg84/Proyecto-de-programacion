@@ -143,27 +143,10 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 		panelJuego.setLayout(new GridLayout(0, 3, 0, 0));
 	
 		
-		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(PantallaJuego1.class.getResource("/imagenes/fondo con logo.png")));
 		lblNewLabel.setBounds(0, 0, 900, 700);
 		add(lblNewLabel);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		//AQUI LIMPIAMOS EL JPANEL DE LA JUGADA
@@ -888,5 +871,6 @@ public class PantallaJuego1 extends JPanel implements ActionListener {
 			rdbtnNewRadioButtonSeleccionado = radio4;
 		}
 	}
+	
 
 }
